@@ -1,0 +1,37 @@
+Index: El_Buen_Sabor/src/main/java/com/project/El_Buen_Sabor/services/BaseServiceImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.project.El_Buen_Sabor.services;\r\n\r\nimport com.project.El_Buen_Sabor.entities.Base;\r\nimport com.project.El_Buen_Sabor.repositories.BaseRepository;\r\n\r\nimport java.io.Serializable;\r\n\r\npublic abstract class BaseServiceImpl<E extends Base, ID extends Serializable> implements BaseService<E, ID> {\r\n    protected BaseRepository baseRepository;\r\n\r\n    public BaseServiceImpl(BaseRepository baseRepository) {\r\n        this.baseRepository = baseRepository;\r\n    }\r\n}\r\n
+===================================================================
+diff --git a/El_Buen_Sabor/src/main/java/com/project/El_Buen_Sabor/services/BaseServiceImpl.java b/El_Buen_Sabor/src/main/java/com/project/El_Buen_Sabor/services/BaseServiceImpl.java
+--- a/El_Buen_Sabor/src/main/java/com/project/El_Buen_Sabor/services/BaseServiceImpl.java	
++++ b/El_Buen_Sabor/src/main/java/com/project/El_Buen_Sabor/services/BaseServiceImpl.java	
+@@ -6,9 +6,11 @@
+ import java.io.Serializable;
+ 
+ public abstract class BaseServiceImpl<E extends Base, ID extends Serializable> implements BaseService<E, ID> {
+-    protected BaseRepository baseRepository;
++    protected BaseRepository<E, ID> baseRepository;
+ 
+-    public BaseServiceImpl(BaseRepository baseRepository) {
++    public BaseServiceImpl(BaseRepository<E, ID> baseRepository) {
+         this.baseRepository = baseRepository;
+     }
++
++
+ }
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"GradleSettings\">\r\n    <option name=\"linkedExternalProjectsSettings\">\r\n      <GradleProjectSettings>\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$/El_Buen_Sabor\" />\r\n        <option name=\"gradleJvm\" value=\"#JAVA_HOME\" />\r\n        <option name=\"modules\">\r\n          <set>\r\n            <option value=\"$PROJECT_DIR$/El_Buen_Sabor\" />\r\n          </set>\r\n        </option>\r\n      </GradleProjectSettings>\r\n    </option>\r\n  </component>\r\n</project>
+===================================================================
+diff --git a/.idea/gradle.xml b/.idea/gradle.xml
+--- a/.idea/gradle.xml	
++++ b/.idea/gradle.xml	
+@@ -1,5 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
++  <component name="GradleMigrationSettings" migrationVersion="1" />
+   <component name="GradleSettings">
+     <option name="linkedExternalProjectsSettings">
+       <GradleProjectSettings>
