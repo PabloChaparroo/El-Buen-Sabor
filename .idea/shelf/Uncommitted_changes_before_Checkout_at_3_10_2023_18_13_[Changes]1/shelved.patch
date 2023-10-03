@@ -1,0 +1,118 @@
+Index: El_Buen_Sabor/src/main/java/com/project/El_Buen_Sabor/services/BaseService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.project.El_Buen_Sabor.services;\r\n\r\nimport java.util.List;\r\npublic interface BaseService<E>{\r\n\r\n    //Nos trae una lista de todas las entidades que se encuentran en nuestra base de datos\r\n    public List<E> findAll() throws Exception;\r\n\r\n    //OBTENER una entidad desde el ID que le pasemos\r\n    public E findById(Long id) throws Exception;\r\n    //\r\n    public E save(E entity) throws Exception;\r\n\r\n    public E update(Long id, E entity ) throws Exception;\r\n\r\n    public boolean delete(Long id) throws Exception;\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/El_Buen_Sabor/src/main/java/com/project/El_Buen_Sabor/services/BaseService.java b/El_Buen_Sabor/src/main/java/com/project/El_Buen_Sabor/services/BaseService.java
+--- a/El_Buen_Sabor/src/main/java/com/project/El_Buen_Sabor/services/BaseService.java	
++++ b/El_Buen_Sabor/src/main/java/com/project/El_Buen_Sabor/services/BaseService.java	
+@@ -1,7 +1,10 @@
+ package com.project.El_Buen_Sabor.services;
+ 
++import com.project.El_Buen_Sabor.entities.Base;
++
++import java.io.Serializable;
+ import java.util.List;
+-public interface BaseService<E>{
++public interface BaseService<E extends Base, ID extends Serializable>{
+ 
+     //Nos trae una lista de todas las entidades que se encuentran en nuestra base de datos
+     public List<E> findAll() throws Exception;
+Index: El_Buen_Sabor/src/main/java/com/project/El_Buen_Sabor/services/ClienteService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.project.El_Buen_Sabor.services;\r\n\r\nimport ch.qos.logback.core.net.server.Client;\r\nimport com.project.El_Buen_Sabor.entities.Cliente;\r\nimport com.project.El_Buen_Sabor.repositories.ClienteRepository;\r\nimport jakarta.transaction.Transactional;\r\nimport org.springframework.stereotype.Service;\r\nimport java.util.List;\r\nimport java.util.Optional;\r\n\r\n@Service\r\npublic class ClienteService implements BaseService<Cliente> {\r\n    private ClienteRepository clienteRepository;\r\n\r\n\r\n    public ClienteService(ClienteRepository clienteRepository) {\r\n        this.clienteRepository = clienteRepository;\r\n    }\r\n\r\n    @Override\r\n    @Transactional\r\n    public List<Cliente> findAll() throws Exception {\r\n        try {\r\n            List<Cliente> entities = clienteRepository.findAll();   //obtener de la base de datos todas las personas que tengamos registradas\r\n            return entities;\r\n        } catch (Exception e) {\r\n            throw new Exception(e.getMessage());\r\n        }\r\n    }\r\n\r\n    @Override\r\n    @Transactional\r\n    public Cliente findById(Long id) throws Exception {\r\n        try {\r\n            Optional<Cliente> entityOptional = clienteRepository.findById(id);\r\n            return entityOptional.get();\r\n        } catch (Exception e) {\r\n            throw new Exception(e.getMessage());\r\n        }\r\n    }\r\n\r\n    @Override\r\n    @Transactional\r\n    public Cliente save(Cliente entity) throws Exception {\r\n        try {\r\n            entity = clienteRepository.save(entity);\r\n            return entity;\r\n        } catch (Exception e) {\r\n            throw new Exception(e.getMessage());\r\n        }\r\n    }\r\n\r\n    @Override\r\n    @Transactional\r\n    public Cliente update(Long id, Cliente entity) throws Exception {\r\n        try {\r\n            Optional<Cliente> entityOptional = clienteRepository.findById(id);\r\n            Cliente cliente = entityOptional.get();\r\n            cliente = clienteRepository.save(cliente);\r\n            return cliente;\r\n        } catch (Exception e) {\r\n            throw new Exception(e.getMessage());\r\n        }\r\n    }\r\n        @Override\r\n        @Transactional\r\n        public boolean delete(Long id) throws Exception {\r\n            try {\r\n               if(clienteRepository.existsById(id)){\r\n                   clienteRepository.deleteById(id);\r\n                   return true;\r\n               } else {\r\n                   throw new Exception();\r\n               }\r\n            } catch (Exception e) {\r\n                throw new Exception(e.getMessage());\r\n            }\r\n    }\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/El_Buen_Sabor/src/main/java/com/project/El_Buen_Sabor/services/ClienteService.java b/El_Buen_Sabor/src/main/java/com/project/El_Buen_Sabor/services/ClienteService.java
+--- a/El_Buen_Sabor/src/main/java/com/project/El_Buen_Sabor/services/ClienteService.java	
++++ b/El_Buen_Sabor/src/main/java/com/project/El_Buen_Sabor/services/ClienteService.java	
+@@ -2,79 +2,22 @@
+ 
+ import ch.qos.logback.core.net.server.Client;
+ import com.project.El_Buen_Sabor.entities.Cliente;
++import com.project.El_Buen_Sabor.repositories.BaseRepository;
+ import com.project.El_Buen_Sabor.repositories.ClienteRepository;
+ import jakarta.transaction.Transactional;
++import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.stereotype.Service;
+ import java.util.List;
+ import java.util.Optional;
+ 
+ @Service
+-public class ClienteService implements BaseService<Cliente> {
++public class ClienteService extends BaseServiceImpl<Cliente, Long> {
++    @Autowired
+     private ClienteRepository clienteRepository;
+ 
+-
+-    public ClienteService(ClienteRepository clienteRepository) {
++    public ClienteService(BaseRepository<Cliente, Long> baseRepository, ClienteRepository clienteRepository) {
++        super(baseRepository);
+         this.clienteRepository = clienteRepository;
+     }
+-
+-    @Override
+-    @Transactional
+-    public List<Cliente> findAll() throws Exception {
+-        try {
+-            List<Cliente> entities = clienteRepository.findAll();   //obtener de la base de datos todas las personas que tengamos registradas
+-            return entities;
+-        } catch (Exception e) {
+-            throw new Exception(e.getMessage());
+-        }
+-    }
+-
+-    @Override
+-    @Transactional
+-    public Cliente findById(Long id) throws Exception {
+-        try {
+-            Optional<Cliente> entityOptional = clienteRepository.findById(id);
+-            return entityOptional.get();
+-        } catch (Exception e) {
+-            throw new Exception(e.getMessage());
+-        }
+-    }
+-
+-    @Override
+-    @Transactional
+-    public Cliente save(Cliente entity) throws Exception {
+-        try {
+-            entity = clienteRepository.save(entity);
+-            return entity;
+-        } catch (Exception e) {
+-            throw new Exception(e.getMessage());
+-        }
+-    }
+-
+-    @Override
+-    @Transactional
+-    public Cliente update(Long id, Cliente entity) throws Exception {
+-        try {
+-            Optional<Cliente> entityOptional = clienteRepository.findById(id);
+-            Cliente cliente = entityOptional.get();
+-            cliente = clienteRepository.save(cliente);
+-            return cliente;
+-        } catch (Exception e) {
+-            throw new Exception(e.getMessage());
+-        }
+-    }
+-        @Override
+-        @Transactional
+-        public boolean delete(Long id) throws Exception {
+-            try {
+-               if(clienteRepository.existsById(id)){
+-                   clienteRepository.deleteById(id);
+-                   return true;
+-               } else {
+-                   throw new Exception();
+-               }
+-            } catch (Exception e) {
+-                throw new Exception(e.getMessage());
+-            }
+-    }
+ }
+ 
