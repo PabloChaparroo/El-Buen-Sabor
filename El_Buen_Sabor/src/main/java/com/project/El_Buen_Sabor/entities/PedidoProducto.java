@@ -2,7 +2,6 @@ package com.project.El_Buen_Sabor.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.envers.Audited;
 
 import java.io.Serializable;
 
@@ -12,19 +11,17 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Getter
 @Setter
-@Builder
-@Audited
-@Table(name = "detallePedido")
-public class PedidoProducto implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+@Table(name = "PedidoProducto")
+public class PedidoProducto extends Base {
+    @Column(name = "cantidad")
     private int cantidad;
+    @Column(name = "subTotal")
     private double subTotal;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "producto_id")
+
+    //Relacion con producto
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "fk_producto")
     private Producto producto;
 
 
