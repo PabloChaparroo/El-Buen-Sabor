@@ -3,9 +3,7 @@ package com.project.El_Buen_Sabor.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.envers.Audited;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,8 +13,6 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
-@Audited
-@Builder
 
 @Table(name = "usuario")
 public class Usuario extends Base {

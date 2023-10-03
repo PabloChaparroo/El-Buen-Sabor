@@ -2,7 +2,6 @@ package com.project.El_Buen_Sabor.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.envers.Audited;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -15,7 +14,6 @@ import java.util.List;
 @Getter
 @Setter
 @Builder
-@Audited
 @Table(name = "producto")
 public class Producto extends Base {
 

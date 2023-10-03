@@ -2,7 +2,6 @@ package com.project.El_Buen_Sabor.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.envers.Audited;
 
 import java.io.Serializable;
 
@@ -12,8 +11,6 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Getter
 @Setter
-@Builder
-@Audited
 @Table(name = "PedidoProducto")
 public class PedidoProducto extends Base {
     @Column(name = "cantidad")
