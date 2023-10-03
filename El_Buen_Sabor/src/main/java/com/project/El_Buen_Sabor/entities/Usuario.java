@@ -6,6 +6,8 @@ import lombok.*;
 import org.hibernate.envers.Audited;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -17,10 +19,7 @@ import java.io.Serializable;
 @Builder
 
 @Table(name = "usuario")
-public class Usuario implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Usuario extends Base {
 
     @Column(name = "nombre")
     private String nombre;
@@ -30,4 +29,11 @@ public class Usuario implements Serializable {
     private String rol;
 
 
+    //Relacion con Pedido
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "usuario_pedido",
+            joinColumns = @JoinColumn(name = "fk_usuario"))
+
+    private List<Usuario> usuario = new ArrayList<Usuario>();
 }

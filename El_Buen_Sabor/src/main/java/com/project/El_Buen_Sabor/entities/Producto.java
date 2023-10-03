@@ -17,20 +17,32 @@ import java.util.List;
 @Builder
 @Audited
 @Table(name = "producto")
-public class Producto implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Producto extends Base {
 
-    private String tipo;
+    //Atributos
+    @Column(name = "tiempoEstimadaCocina")
     private int tiempoEstimadoCocina;
+    @Column(name = "denominacion")
     private String denominacion;
+    @Column(name = "precioVenta")
     private double precioVenta;
+    @Column(name = "precioCompra")
     private double precioCompra;
+    @Column(name = "stockActual")
     private int stockActual;
+    @Column(name = "stockMinimo")
     private int stockMinimo;
+    @Column(name = "unidadMedida")
     private String unidadMedida;
+    @Column(name = "receta")
     private String receta;
+
+    private Tipo tipo;
+    public enum Tipo {
+        MANUFACTURADO,
+        INSUMO
+    }
+
 }
 
 

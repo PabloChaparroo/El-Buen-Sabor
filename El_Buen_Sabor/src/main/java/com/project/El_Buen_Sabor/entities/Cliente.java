@@ -19,12 +19,9 @@ import java.util.List;
 @Builder
 
 @Table(name = "cliente")            //Cómo se llama la tabla
-public class Cliente implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Cliente extends Base {
 
-
+    //Atributos
     @Column(name = "nombre")
     private String nombre;
     @Column(name = "apellido")
@@ -36,8 +33,20 @@ public class Cliente implements Serializable {
 
     //Relacion a domicilio
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    @JoinColumn(name = "idCliente")
-    @Builder.Default
+    @JoinTable(
+            name = "Cliente_Domicilio",
+            joinColumns = @JoinColumn(name = "fk_cliente"))
 
-    private List<Domicilio> domicilios = new ArrayList<>();
+    private List<Domicilio> domicilios = new ArrayList<Domicilio>();
+
+
+    //Relacion con pedido
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "cliente_pedido",
+            joinColumns = @JoinColumn(name = "fk_cliente"))
+
+    private List<Pedido> pedido = new ArrayList<Pedido>();
+
+
 }

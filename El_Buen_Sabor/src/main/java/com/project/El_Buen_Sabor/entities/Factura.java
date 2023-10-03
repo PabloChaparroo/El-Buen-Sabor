@@ -16,11 +16,7 @@ import java.util.Date;
 @Setter
 @Audited
 @Table(name = "factura")
-public class Factura implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class Factura extends Base {
 
     @Column(name = "numero")
     private int numero;
@@ -28,10 +24,15 @@ public class Factura implements Serializable {
     private Date fecha;
     @Column(name = "descuento")
     private double descuento;
-    @Column(name = "formaPago")
-    private String formaPago;
     @Column(name = "total")
     private int total;
+
+    private FormaPago formaPago;
+    public enum FormaPago {
+        EFECIVO,
+        MERCADOPAGO,
+        DEBITO
+    }
 
 
 
