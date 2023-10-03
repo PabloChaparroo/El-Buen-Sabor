@@ -6,9 +6,10 @@ import com.project.El_Buen_Sabor.repositories.PedidoRepository;
 import com.project.El_Buen_Sabor.repositories.ProductoRepository;
 import com.project.El_Buen_Sabor.services.BaseService.BaseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class ProductoServiceImpl extends BaseServiceImpl<Producto, Long> implements ProductoService{
     @Autowired
     private ProductoRepository productoRepository;
