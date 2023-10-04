@@ -1,8 +1,10 @@
 package com.project.El_Buen_Sabor.entities;
 
 import jakarta.persistence.*;
-import lombok.*;
-
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -10,12 +12,10 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-@Builder
 @Table(name = "pedido")
 public class Pedido extends Base {
 
@@ -38,7 +38,7 @@ public class Pedido extends Base {
     }
 
     public enum TipoEnvio {
-        DELIVEY,
+        DELIVERY,
         RETIRA
     }
 
@@ -59,9 +59,7 @@ public class Pedido extends Base {
 
 
     //Relacion con domicilio
-    @ManyToOne(optional = false)        //El domicilio no puede ser nulo a la hora de crear un pedido
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_domicilio")
     private Domicilio domicilio;
-
-
 }

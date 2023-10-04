@@ -3,9 +3,6 @@ package com.project.El_Buen_Sabor.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Data

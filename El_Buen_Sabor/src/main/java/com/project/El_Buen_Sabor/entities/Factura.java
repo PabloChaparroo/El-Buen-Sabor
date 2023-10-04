@@ -25,7 +25,7 @@ public class Factura extends Base {
 
     private FormaPago formaPago;
     public enum FormaPago {
-        EFECIVO,
+        EFECTIVO,
         MERCADOPAGO,
         DEBITO
     }

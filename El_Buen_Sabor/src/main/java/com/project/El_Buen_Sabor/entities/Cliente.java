@@ -1,6 +1,6 @@
 package com.project.El_Buen_Sabor.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,16 +20,16 @@ import java.util.List;
 public class Cliente extends Base {
 
     //Atributos
-   // @Column(name = "nombre")
+    @Column(name = "nombre")
     private String nombre;
-    //@Column(name = "apellido")
-    //private String apellido;
-    //@Column(name = "telefono")
-    //private int telefono;
-    //@Column(name = "email")
-    //private String email;
+    @Column(name = "apellido")
+    private String apellido;
+    @Column(name = "telefono")
+    private String telefono;
+    @Column(name = "email")
+    private String email;
 
-    /*
+
     //Relacion a domicilio
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinTable(
@@ -46,6 +46,6 @@ public class Cliente extends Base {
             joinColumns = @JoinColumn(name = "fk_cliente"))
 
     private List<Pedido> pedido = new ArrayList<Pedido>();
-*/
+
 
 }

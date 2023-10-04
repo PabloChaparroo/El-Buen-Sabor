@@ -3,7 +3,6 @@ package com.project.El_Buen_Sabor.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.io.Serializable;
 
 @Entity
 @Data
@@ -20,7 +19,7 @@ public class PedidoProducto extends Base {
 
 
     //Relacion con producto
-    @ManyToOne(optional = false)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_producto")
     private Producto producto;
 
