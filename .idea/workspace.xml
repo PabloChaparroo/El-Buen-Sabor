@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f80c3f60-4723-4bb0-9a77-73649aed0fe3" name="Changes" comment="Hice lo de Base, BaseRepository y BaseService" />
+    <list default="true" id="f80c3f60-4723-4bb0-9a77-73649aed0fe3" name="Changes" comment="Agregue:&#10;- Dependencias que faltaban (Swagger)&#10;- .jar en build.gradle&#10;- Dockerfile" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,16 +32,18 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="Dockerfile" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="rama_Saavedra" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -61,6 +63,9 @@
   &quot;associatedIndex&quot;: 7
 }</component>
   <component name="ProjectId" id="2WFqXsegdiQMNMdfrNcjoSk1LOW" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -69,12 +74,15 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "rama__Saavedra__jar",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Ariel/Desktop"
+    "last_opened_file_path": "C:/Users/Ariel/IdeaProjects/El-Buen-Sabor",
+    "settings.editor.selected.configurable": "vcs.Git"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.project.El_Buen_Sabor.services.ProductoService" />
       <recent name="com.project.El_Buen_Sabor.services" />
     </key>
   </component>
@@ -118,7 +126,63 @@
       <option name="project" value="LOCAL" />
       <updated>1696349760784</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Hice lo de Base, BaseRepository y BaseService">
+      <option name="closed" value="true" />
+      <created>1696372396706</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1696372396706</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Hice lo de Base, BaseRepository y BaseService">
+      <option name="closed" value="true" />
+      <created>1696372446959</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1696372446959</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Hice lo de los controllers">
+      <option name="closed" value="true" />
+      <created>1696372490871</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1696372490871</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Hice lo de los controllers">
+      <option name="closed" value="true" />
+      <created>1696372509350</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1696372509350</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Hice lo de los controllers">
+      <option name="closed" value="true" />
+      <created>1696374147412</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1696374147412</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Faltaba un @Service en ProductoServiceImpl">
+      <option name="closed" value="true" />
+      <created>1696374598533</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1696374598533</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Agregue:&#10;- Dependencias que faltaban (Swagger)&#10;- .jar en build.gradle&#10;- Dockerfile">
+      <option name="closed" value="true" />
+      <created>1696437433109</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1696437433110</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -135,6 +199,11 @@
         <entry key="Branch">
           <value>
             <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/rama_del_pablo" />
+                </option>
+              </RecentGroup>
               <RecentGroup>
                 <option name="FILTER_VALUES">
                   <option value="origin/rama_Saavedra" />
@@ -155,7 +224,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/rama_Saavedra" />
+                        <option value="origin/rama_del_pablo" />
                       </list>
                     </value>
                   </entry>
@@ -169,6 +238,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Hice lo de Base, BaseRepository y BaseService" />
-    <option name="LAST_COMMIT_MESSAGE" value="Hice lo de Base, BaseRepository y BaseService" />
+    <MESSAGE value="Hice lo de los controllers" />
+    <MESSAGE value="Faltaba un @Service en ProductoServiceImpl" />
+    <MESSAGE value="Agregue:&#10;- Dependencias que faltaban (Swagger)&#10;- .jar en build.gradle&#10;- Dockerfile" />
+    <option name="LAST_COMMIT_MESSAGE" value="Agregue:&#10;- Dependencias que faltaban (Swagger)&#10;- .jar en build.gradle&#10;- Dockerfile" />
   </component>
 </project>
