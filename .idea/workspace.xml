@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f80c3f60-4723-4bb0-9a77-73649aed0fe3" name="Changes" comment="Agregue:&#10;- Dependencias que faltaban (Swagger)&#10;- .jar en build.gradle&#10;- Dockerfile" />
+    <list default="true" id="f80c3f60-4723-4bb0-9a77-73649aed0fe3" name="Changes" comment="Guarde el Dockerfile">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -182,7 +184,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696437433110</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Guarde el Dockerfile">
+      <option name="closed" value="true" />
+      <created>1696443718330</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1696443718330</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -241,6 +251,7 @@
     <MESSAGE value="Hice lo de los controllers" />
     <MESSAGE value="Faltaba un @Service en ProductoServiceImpl" />
     <MESSAGE value="Agregue:&#10;- Dependencias que faltaban (Swagger)&#10;- .jar en build.gradle&#10;- Dockerfile" />
-    <option name="LAST_COMMIT_MESSAGE" value="Agregue:&#10;- Dependencias que faltaban (Swagger)&#10;- .jar en build.gradle&#10;- Dockerfile" />
+    <MESSAGE value="Guarde el Dockerfile" />
+    <option name="LAST_COMMIT_MESSAGE" value="Guarde el Dockerfile" />
   </component>
 </project>
