@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f80c3f60-4723-4bb0-9a77-73649aed0fe3" name="Changes" comment="Guarde el Dockerfile">
+    <list default="true" id="f80c3f60-4723-4bb0-9a77-73649aed0fe3" name="Changes" comment="Hice de nuevo el gradle build por si habia algun error en lo que respecta a crearlo sin tener el Dockerfile anteriormente definido en la carpeta">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/El_Buen_Sabor/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/El_Buen_Sabor/Dockerfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,13 +80,17 @@
     "git-widget-placeholder": "rama__Saavedra__jar",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/Ariel/IdeaProjects/El-Buen-Sabor",
-    "settings.editor.selected.configurable": "vcs.Git"
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.project.El_Buen_Sabor.services.ProductoService" />
       <recent name="com.project.El_Buen_Sabor.services" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Ariel\IdeaProjects\El-Buen-Sabor\El_Buen_Sabor" />
+      <recent name="C:\Users\Ariel\IdeaProjects\El-Buen-Sabor\El_Buen_Sabor\src" />
     </key>
   </component>
   <component name="RunManager">
@@ -192,7 +197,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696443718330</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Hice de nuevo el gradle build por si habia algun error en lo que respecta a crearlo sin tener el Dockerfile anteriormente definido en la carpeta">
+      <option name="closed" value="true" />
+      <created>1696449321555</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1696449321555</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -252,6 +265,7 @@
     <MESSAGE value="Faltaba un @Service en ProductoServiceImpl" />
     <MESSAGE value="Agregue:&#10;- Dependencias que faltaban (Swagger)&#10;- .jar en build.gradle&#10;- Dockerfile" />
     <MESSAGE value="Guarde el Dockerfile" />
-    <option name="LAST_COMMIT_MESSAGE" value="Guarde el Dockerfile" />
+    <MESSAGE value="Hice de nuevo el gradle build por si habia algun error en lo que respecta a crearlo sin tener el Dockerfile anteriormente definido en la carpeta" />
+    <option name="LAST_COMMIT_MESSAGE" value="Hice de nuevo el gradle build por si habia algun error en lo que respecta a crearlo sin tener el Dockerfile anteriormente definido en la carpeta" />
   </component>
 </project>
