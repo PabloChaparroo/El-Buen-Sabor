@@ -1,12 +1,12 @@
 package com.project.El_Buen_Sabor.entities;
 
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,31 +16,45 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
-@Table(name = "pedido")
+@Table(name = "Pedido")
 public class Pedido extends Base {
 
     //Atributos
-    @Column(name = "fecha")
-    private Date fecha;
+    @Column(name = "fecha Pedido")
+    private Date fechaPedido;
     @Column(name = "total")
     private double total;
     @Column(name = "horaEstimadaEntrega")
     private Date horaEstimidaEntrega;
+    @Column(name = "fecha Alta")
+    private Date fechaAlta;
+    @Column(name = "fecha modificacion")
+    private Date fechaModificacion;
+    @Column(name = "fechaBaja")
+    private Date fechaBaja;
 
     private EstadoPedido estado;
 
     private TipoEnvio tipoEnvio;
 
+
     public enum EstadoPedido {
-        INICIADO,
+        PENDIENTE_PAGO,
+        PAGADO,
         PREPARACION,
-        ENTREGADO
+        PENDIENTE_ENTREGA,
+        EN_CAMINO,
+        CANCELADO,
+        NOTA_CREDITO,
+        COMPLETADO
     }
 
     public enum TipoEnvio {
         DELIVERY,
-        RETIRA
+        TAKE_AWAY
     }
+
+
 
 
     //Relacion con Factura (puntero) 1 a 0..1
@@ -49,13 +63,11 @@ public class Pedido extends Base {
     private Factura factura;
 
 
-    //Relacion con PedidoProducto
+    //Relacion con DetallePedido
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)    //orphanRemoval sirve para que si eliminamos un pedido tambien se eliminen los pedidosProducto asociados a ese pedido
-    @JoinTable(
-            name = "pedido_pedidoProducto",
-            joinColumns = @JoinColumn(name = "fk_pedido"))
+    @JoinColumn(name = "fk_pedido")
 
-    private List<PedidoProducto> pedidoProductos = new ArrayList<PedidoProducto>();
+    private List<DetallePedido> detallePedidos = new ArrayList<DetallePedido>();
 
 
     //Relacion con domicilio
