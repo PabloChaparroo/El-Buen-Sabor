@@ -7,6 +7,8 @@ import com.project.El_Buen_Sabor.services.BaseService.BaseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ArticuloInsumoServiceImpl extends BaseServiceImpl<ArticuloInsumo, Long> implements ArticuloInsumoService {
     @Autowired
@@ -14,5 +16,10 @@ public class ArticuloInsumoServiceImpl extends BaseServiceImpl<ArticuloInsumo, L
 
     public ArticuloInsumoServiceImpl(BaseRepository<ArticuloInsumo, Long> baseRepository) {
         super(baseRepository);
+    }
+
+    @Override
+    public List<ArticuloInsumo> search(String filtro) throws Exception {
+        return null;
     }
 }
