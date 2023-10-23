@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -14,22 +15,22 @@ import java.util.List;
 @Getter
 @Setter
 
-@Table(name = "usuario")
+@Table(name = "Usuario")
 public class Usuario extends Base {
 
-    @Column(name = "nombre")
-    private String nombre;
+    @Column(name = "nombre usuario")
+    private String nombreUsuario;
     @Column(name = "contraseña")
     private String contraseña;
-    @Column(name = "rol")
+    @Column(name = "correo electronico")
     private String rol;
+    @Column(name = "fecha Alta")
+    private Date fechaAlta;
+    @Column(name = "fecha modificacion")
+    private Date fechaModificacion;
+    @Column(name = "fechaBaja")
+    private Date fechaBaja;
 
 
-    //Relacion con Pedido
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "usuario_pedido",
-            joinColumns = @JoinColumn(name = "fk_usuario"))
 
-    private List<Usuario> usuario = new ArrayList<Usuario>();
 }

@@ -4,5 +4,5 @@ import com.project.El_Buen_Sabor.entities.Factura;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface FacturaRepository extends BaseRepository<Factura,Long> {
+public interface FacturaRepository extends BaseRepository<Factura, Long> {
 }

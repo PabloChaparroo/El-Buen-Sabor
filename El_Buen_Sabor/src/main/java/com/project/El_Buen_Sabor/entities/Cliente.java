@@ -1,6 +1,7 @@
 package com.project.El_Buen_Sabor.entities;
 
 
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -16,7 +18,7 @@ import java.util.List;
 @Getter
 @Setter
 
-@Table(name = "cliente")            //Cómo se llama la tabla
+@Table(name = "Cliente")            //Cómo se llama la tabla
 public class Cliente extends Base {
 
     //Atributos
@@ -28,24 +30,31 @@ public class Cliente extends Base {
     private String telefono;
     @Column(name = "email")
     private String email;
-
+    @Column(name = "fecha Alta")
+    private Date fechaAlta;
+    @Column(name = "fecha modificacion")
+    private Date fechaModificacion;
+    @Column(name = "fechaBaja")
+    private Date fechaBaja;
 
     //Relacion a domicilio
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "Cliente_Domicilio",
-            joinColumns = @JoinColumn(name = "fk_cliente"))
+    @JoinColumn(name = "fk_cliente")
 
     private List<Domicilio> domicilios = new ArrayList<Domicilio>();
 
 
     //Relacion con pedido
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "cliente_pedido",
-            joinColumns = @JoinColumn(name = "fk_cliente"))
+    @JoinColumn(name = "fk_cliente")
 
     private List<Pedido> pedido = new ArrayList<Pedido>();
+
+    //Relacion con Usuario 1 a 1
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_usuario")
+    private Usuario usuario;
+
 
 
 }

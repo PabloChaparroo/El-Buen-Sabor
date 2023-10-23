@@ -11,7 +11,7 @@ import lombok.*;
 @AllArgsConstructor
 @Getter
 @Setter
-@Table(name = "domicilio")
+@Table(name = "Domicilio")
 public class Domicilio extends Base {
 
 
