@@ -1,5 +1,6 @@
 package com.project.El_Buen_Sabor.services.DetalleArticuloManufacturadoService;
 
+
 import com.project.El_Buen_Sabor.entities.DetalleArticuloManufacturado;
 import com.project.El_Buen_Sabor.repositories.BaseRepository;
 import com.project.El_Buen_Sabor.repositories.DetalleArticuloManufacturadoRepository;
@@ -16,4 +17,9 @@ public class DetalleArticuloManufacturadoServiceImpl extends BaseServiceImpl<Det
         super(baseRepository);
         this.detalleArticuloManufacturadoRepository = detalleArticuloManufacturadoRepository;
     }
-}
+
+
+
+        }
+
+
