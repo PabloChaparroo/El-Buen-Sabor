@@ -14,9 +14,9 @@ import java.util.List;
 @Repository
 public interface ArticuloManufacturadoRepository extends BaseRepository<ArticuloManufacturado,Long> {
 
-    @Query(value= "SELECT am FROM ArticuloManufacturado am WHERE am.denominacion LIKE '%1%'")
+    @Query(value= "SELECT am FROM ArticuloManufacturado am WHERE am.denominacion LIKE '%filtro%'")
     List<ArticuloManufacturado> search(String filtro);
-    @Query(value= "SELECT am FROM ArticuloManufacturado am WHERE am.denominacion LIKE '%1%'")
+    @Query(value= "SELECT am FROM ArticuloManufacturado am WHERE am.denominacion LIKE '%filtro%'")
     Page<ArticuloManufacturado> search(String filtro, Pageable pageable);
   
   
