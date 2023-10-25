@@ -4,7 +4,11 @@ import com.project.El_Buen_Sabor.repositories.BaseRepository;
 import com.project.El_Buen_Sabor.repositories.PedidoRepository;
 import com.project.El_Buen_Sabor.services.BaseService.BaseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class PedidoServiceImpl extends BaseServiceImpl<Pedido, Long> implements PedidoService {
@@ -17,4 +21,26 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido, Long> implements 
     }
 
 
+
+    @Override
+    public List<Pedido> search(String filtro) throws Exception {
+        try {
+            List<Pedido> pedidos = pedidoRepository.search(filtro);
+            return pedidos;
+        }catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    @Override
+    public Page<Pedido> search(String filtro, Pageable pageable) throws Exception {
+        try {
+
+            Page<Pedido> pedidos = pedidoRepository.search(filtro, pageable);
+            return pedidos;
+        }catch (Exception e){
+            throw  new Exception(e.getMessage());
+
+        }
+    }
 }
