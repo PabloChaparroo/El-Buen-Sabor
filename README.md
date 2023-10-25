@@ -1,10 +1,10 @@
 # El-Buen-Sabor
-##fecha de entrega
+## fecha de entrega
 Miercoles 25 de Octubre
 
-##Decripcion
+## Decripcion
 
-#Sprint 4 – Api Rest – Test
+# Sprint 4 – Api Rest – Test
 El presente Sprint presenta la codificación en Java del modelo de entidades completo del sitio de ecommerce, 
 estableciendo las capas de controladores, servicios y repositorios. Además se deben realizar los test unitarios a las entidades principales. 
 Por otro lado para probar el comportamiento de la Api Rest se deberá crear todas las pruebas en postman para verificar el comportamiento correcto de la Api.
