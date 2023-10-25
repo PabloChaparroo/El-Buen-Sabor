@@ -3,12 +3,16 @@ package com.project.El_Buen_Sabor.services.ClienteService;
 import com.project.El_Buen_Sabor.entities.*;
 import com.project.El_Buen_Sabor.repositories.BaseRepository;
 import com.project.El_Buen_Sabor.repositories.ClienteRepository;
+import com.project.El_Buen_Sabor.repositories.DetallePedidoRepository;
+import com.project.El_Buen_Sabor.services.ArticuloInsumoService.ArticuloInsumoService;
+import com.project.El_Buen_Sabor.services.ArticuloManufacturadoService.ArticuloManufacturadoService;
 import com.project.El_Buen_Sabor.services.BaseService.BaseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class ClienteServiceImpl extends BaseServiceImpl<Cliente, Long> implements ClienteService {
@@ -26,8 +30,17 @@ public class ClienteServiceImpl extends BaseServiceImpl<Cliente, Long> implement
 
 
 
+    //Harcodeo-------------------------------------
+    @Autowired
+    private DetallePedidoRepository detallePedidoRepository;
+    @Autowired
+    private ArticuloManufacturadoService articuloManufacturadoService;
+    @Autowired
+    private ArticuloInsumoService articuloInsumoService;
+
+
     //Metodos de inicializacion de datos (harcodeo)
-        public void initClientes() throws Exception{
+    public void initClientes() throws Exception {
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             Date fechaAlta = sdf.parse("23/10/2023");
@@ -59,10 +72,15 @@ public class ClienteServiceImpl extends BaseServiceImpl<Cliente, Long> implement
             Usuario usuario1 = new Usuario();
             usuario1.setNombreUsuario("Pabloo11");
             usuario1.setContraseña("1234");
-            usuario1.setRol(Usuario.Rol.ADMINISTRADOR);
+            usuario1.setRol(Usuario.Rol.COCINERO);
             usuario1.setFechaAlta(fechaAlta);
-
             cliente1.setUsuario(usuario1);
+
+            Pedido pedido1 = new Pedido();
+            pedido1.setHoraEstimidaEntrega("30min");
+            pedido1.setTotal(3000);
+            pedido1.setEstado(Pedido.EstadoPedido.COMPLETADO);
+            pedido1.setTipoEnvio(Pedido.TipoEnvio.DELIVERY);
 
 
             //Cliente 2: Saavedra Francisco
@@ -92,180 +110,80 @@ public class ClienteServiceImpl extends BaseServiceImpl<Cliente, Long> implement
 
             cliente2.setUsuario(usuario2);
 
-            Pedido pedido1 = new Pedido();
-            pedido1.setHoraEstimidaEntrega("30min");
-            pedido1.setTotal(3000);
-            pedido1.setEstado(Pedido.EstadoPedido.COMPLETADO);
-            pedido1.setTipoEnvio(Pedido.TipoEnvio.DELIVERY);
-
             Pedido pedido2 = new Pedido();
             pedido2.setHoraEstimidaEntrega("50min");
             pedido2.setTotal(5000);
-            pedido2.setEstado(Pedido.EstadoPedido.PAGADO);
+            pedido2.setEstado(Pedido.EstadoPedido.COMPLETADO);
             pedido2.setTipoEnvio(Pedido.TipoEnvio.TAKE_AWAY);
 
-            cliente2.getPedido().add(pedido1);
+            Pedido pedido3 = new Pedido();
+            pedido3.setHoraEstimidaEntrega("30min");
+            pedido3.setTotal(5000);
+            pedido3.setEstado(Pedido.EstadoPedido.PREPARACION);
+            pedido3.setTipoEnvio(Pedido.TipoEnvio.DELIVERY);
+
             cliente2.getPedido().add(pedido2);
+            cliente2.getPedido().add(pedido3);
 
 
+            // Obtener el artículo manufacturado "Hamburguesa" de la base de datos
+            ArticuloManufacturado articuloManufacturadoHamburguesa = articuloManufacturadoService.obtenerArticuloHamburguesa();
+
+            // Obtener el artículos insumos de la base de datos
+            ArticuloInsumo articuloInsumoQueso = articuloInsumoService.findByDenominacion("Queso");
+            ArticuloInsumo articuloInsumoPan = articuloInsumoService.findByDenominacion("Pan");
+            ArticuloInsumo articuloInsumoLechuga = articuloInsumoService.findByDenominacion("Lechuga");
+            ArticuloInsumo articuloInsumoTomate = articuloInsumoService.findByDenominacion("Tomate");
+            ArticuloInsumo articuloInsumoCarne = articuloInsumoService.findByDenominacion("Carne");
 
 
+                                     // Detalle de cuantas hamburguesas pidio
+                                     DetallePedido detallePedido2 = new DetallePedido();
+                                     detallePedido2.setCantidad(3);
+                                     detallePedido2.setArticuloManufacturado(articuloManufacturadoHamburguesa);
 
 
+                                     //Calculo de subtotal de detallePedido1
+                                            double precioHamburguesa = articuloManufacturadoHamburguesa.getPrecioVenta();
+                                            double subTotal1 = detallePedido2.getCantidad() * precioHamburguesa;
+                                            detallePedido2.setSubTotal(subTotal1);
 
+                                     pedido2.getDetallePedidos().add(detallePedido2);
 
-            //Articulo insumos
+                                     //Detalle de cantidad de ingrediente consumido
+                                     //Cantidad de Pan
+                                     DetallePedido detallePedido3 = new DetallePedido();
+                                     detallePedido3.setCantidad(2);
+                                     detallePedido3.setArticuloInsumo(articuloInsumoPan);
 
-            ArticuloInsumo articuloInsumoQueso = new ArticuloInsumo();
-            articuloInsumoQueso.setDenominacion("queso");
-            articuloInsumoQueso.setStockActual(20.3);
-            articuloInsumoQueso.setStockMinimo(5);
-            articuloInsumoQueso.setPrecioCompra(2300);
+                                     pedido2.getDetallePedidos().add(detallePedido3);
 
+                                     //Cantidad de Lechuga
+                                     DetallePedido detallePedido4 = new DetallePedido();
+                                     detallePedido4.setCantidad(150);
+                                     detallePedido4.setArticuloInsumo(articuloInsumoLechuga);
 
-            ArticuloInsumo articuloInsumoLechuga = new ArticuloInsumo();
-            articuloInsumoLechuga.setDenominacion("Lechuga");
-            articuloInsumoLechuga.setStockActual(15.0);
-            articuloInsumoLechuga.setStockMinimo(3);
-            articuloInsumoLechuga.setPrecioCompra(500);
+                                     pedido2.getDetallePedidos().add(detallePedido4);
 
+                                     //Cantidad de Tomate
+                                     DetallePedido detallePedido5 = new DetallePedido();
+                                     detallePedido5.setCantidad(175);
+                                     detallePedido5.setArticuloInsumo(articuloInsumoTomate);
 
-            ArticuloInsumo articuloInsumoTomate = new ArticuloInsumo();
-            articuloInsumoTomate.setDenominacion("Tomate");
-            articuloInsumoTomate.setStockActual(12.0);
-            articuloInsumoTomate.setStockMinimo(2);
-            articuloInsumoTomate.setPrecioCompra(400);
+                                     pedido2.getDetallePedidos().add(detallePedido5);
 
+                                     //Cantidad de Carne
+                                     DetallePedido detallePedido6 = new DetallePedido();
+                                     detallePedido6.setCantidad(2);
+                                     detallePedido6.setArticuloInsumo(articuloInsumoCarne);
 
-            ArticuloInsumo articuloInsumoCarne = new ArticuloInsumo();
-            articuloInsumoCarne.setDenominacion("Carne");
-            articuloInsumoCarne.setStockActual(30.0); // Cantidad de carne en stock
-            articuloInsumoCarne.setStockMinimo(10);   // Stock mínimo de carne
-            articuloInsumoCarne.setPrecioCompra(1800);
+                                     pedido2.getDetallePedidos().add(detallePedido6);
 
-            ArticuloInsumo articuloInsumoPan = new ArticuloInsumo();
-            articuloInsumoPan.setDenominacion("Pan");
-            articuloInsumoPan.setStockActual(50.0); // Cantidad de Pan en stock
-            articuloInsumoPan.setStockMinimo(10);   // Stock mínimo de pan
-            articuloInsumoPan.setPrecioCompra(3);
+                                    DetallePedido detallePedido7 = new DetallePedido();
+                                    detallePedido6.setCantidad(200);
+                                    detallePedido6.setArticuloInsumo(articuloInsumoQueso);
 
-
-            //Articulos Manufacturados
-            //Hamburguesa:
-            ArticuloManufacturado articuloManufacturadoHamburguesa = new ArticuloManufacturado();
-            articuloManufacturadoHamburguesa.setDenominacion("Hamburguesa");
-            articuloManufacturadoHamburguesa.setDescripcion("Hamburguesa con queso");
-            articuloManufacturadoHamburguesa.setTiempoEstimadoCocina(15.0);
-            articuloManufacturadoHamburguesa.setCosto(500.0);
-            articuloManufacturadoHamburguesa.setPrecioVenta(750.0);
-            articuloManufacturadoHamburguesa.setFechaAlta(new Date("23/10/2023"));
-
-            //Pizza
-            ArticuloManufacturado articuloManufacturado2 = new ArticuloManufacturado();
-            articuloManufacturado2.setDenominacion("Pizza");
-            articuloManufacturado2.setDescripcion("Especial");
-            articuloManufacturado2.setTiempoEstimadoCocina(15.0);
-            articuloManufacturado2.setCosto(900.0);
-            articuloManufacturado2.setPrecioVenta(1599.0);
-            articuloManufacturado2.setFechaAlta(new Date("23/10/2023"));
-
-
-
-
-            //Hamburguesa:
-            //Cantidad: 2.5 de queso,
-            DetalleArticuloManufacturado detalleArticuloManufacturadoHamburguesaQueso = new DetalleArticuloManufacturado();
-            detalleArticuloManufacturadoHamburguesaQueso.setCantidad(20); // Cantidad de queso
-            detalleArticuloManufacturadoHamburguesaQueso.getArticuloInsumos().add(articuloInsumoQueso); //2.5 de queso
-            detalleArticuloManufacturadoHamburguesaQueso.setArticuloManufacturado(articuloManufacturadoHamburguesa);
-
-            //Pan
-            DetalleArticuloManufacturado detalleArticuloManufacturadoHamburguesaPan = new DetalleArticuloManufacturado();
-            detalleArticuloManufacturadoHamburguesaPan.setCantidad(2); // Cantidad de pan
-            detalleArticuloManufacturadoHamburguesaPan.getArticuloInsumos().add(articuloInsumoQueso);
-            detalleArticuloManufacturadoHamburguesaPan.setArticuloManufacturado(articuloManufacturadoHamburguesa);
-
-            //Lechuga
-            DetalleArticuloManufacturado detalleArticuloManufacturadoHamburguesaLechuga = new DetalleArticuloManufacturado();
-            detalleArticuloManufacturadoHamburguesaLechuga.setCantidad(20); // Cantidad de lechuga en gramos
-            detalleArticuloManufacturadoHamburguesaLechuga.getArticuloInsumos().add(articuloInsumoQueso);
-            detalleArticuloManufacturadoHamburguesaLechuga.setArticuloManufacturado(articuloManufacturadoHamburguesa);
-
-            //Tomate
-            DetalleArticuloManufacturado detalleArticuloManufacturadoHamburguesaTomate = new DetalleArticuloManufacturado();
-            detalleArticuloManufacturadoHamburguesaTomate.setCantidad(15); // Cantidad de tomate gramos
-            detalleArticuloManufacturadoHamburguesaTomate.getArticuloInsumos().add(articuloInsumoQueso);
-            detalleArticuloManufacturadoHamburguesaTomate.setArticuloManufacturado(articuloManufacturadoHamburguesa);
-
-
-
-
-
-
-            //Pedido 1: pidio 3 hamburguesas
-            DetallePedido detallePedido1 = new DetallePedido();
-            detallePedido1.setCantidad(3); //este pedido tiene 3 hamburguesa
-            detallePedido1.setArticuloManufacturado(articuloManufacturadoHamburguesa);  //relacion con hamburguesa
-
-                //Calculo de subtotal de detallePedido1
-                double precioHamburguesa = articuloManufacturadoHamburguesa.getPrecioVenta();
-                double subTotal1 = detallePedido1.getCantidad() * precioHamburguesa;
-                detallePedido1.setSubTotal(subTotal1);
-
-            pedido1.getDetallePedidos().add(detallePedido1);
-
-            // Detalle de ingredientes de la hamburguesa
-            DetallePedido detallePedido2 = new DetallePedido();
-            detallePedido2.setCantidad(20);
-            detallePedido2.setArticuloInsumo(articuloInsumoQueso);
-
-                // Calcular el subtotal del detallePedido2
-                double precioQueso = articuloInsumoQueso.getPrecioCompra();
-                double subtotal2 = detallePedido2.getCantidad() * precioQueso;
-            detallePedido2.setSubTotal(subtotal2);
-
-            pedido1.getDetallePedidos().add(detallePedido2);
-
-            DetallePedido detallePedido3 = new DetallePedido();
-            detallePedido3.setCantidad(2);
-            detallePedido3.setArticuloInsumo(articuloInsumoPan);
-
-            // Calcular el subtotal del detallePedido3
-                double precioPan = articuloInsumoPan.getPrecioCompra();
-                double subtotal3 = detallePedido3.getCantidad() * precioPan;
-                detallePedido3.setSubTotal(subtotal3);
-
-            pedido1.getDetallePedidos().add(detallePedido3);
-
-            DetallePedido detallePedido4 = new DetallePedido();
-            detallePedido4.setCantidad(20);
-            detallePedido4.setArticuloInsumo(articuloInsumoLechuga);
-
-            // Calcular el subtotal del detallePedido4
-                double precioLechuga = articuloInsumoLechuga.getPrecioCompra();
-                double subtotal4 = detallePedido4.getCantidad() * precioLechuga;
-                detallePedido4.setSubTotal(subtotal4);
-
-            pedido1.getDetallePedidos().add(detallePedido4);
-
-            DetallePedido detallePedido5 = new DetallePedido();
-            detallePedido5.setCantidad(15);
-            detallePedido5.setArticuloInsumo(articuloInsumoTomate);
-
-                // Calcular el subtotal del detallePedido5
-                double precioTomate = articuloInsumoTomate.getPrecioCompra();
-                double subtotal5 = detallePedido5.getCantidad() * precioTomate;
-                detallePedido5.setSubTotal(subtotal5);
-
-            pedido1.getDetallePedidos().add(detallePedido5);
-
-
-
-
-
-
-
-
+                                    pedido2.getDetallePedidos().add(detallePedido7);
 
             //Cliente 3: Bernardo Fernandez
             //Domicilio 4: Guaymallen calle Godoy Cruz 666
@@ -312,12 +230,13 @@ public class ClienteServiceImpl extends BaseServiceImpl<Cliente, Long> implement
             save(cliente3);
             save(cliente4);
             save(cliente5);
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Error en la inicialización de datos:" + e.getMessage());
             e.printStackTrace();
         }
 
-        }
+    }
+
 
 
 
