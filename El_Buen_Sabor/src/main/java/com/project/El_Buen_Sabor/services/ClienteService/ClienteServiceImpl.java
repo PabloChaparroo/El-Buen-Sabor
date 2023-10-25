@@ -39,14 +39,21 @@ public class ClienteServiceImpl extends BaseServiceImpl<Cliente, Long> implement
         }
     }
 
+
+    //Harcodeo-------------------------------------
     @Override
     public Page<Cliente> search(String filtro, Pageable pageable) throws Exception {
         try {
+            Page<Cliente> clientes = clienteRepository.search(filtro, pageable);
+            return clientes;
+        }catch (Exception e){
+            throw  new Exception(e.getMessage());
 
-          
+        }
+    }
 
 
-    //Harcodeo-------------------------------------
+
     @Autowired
     private DetallePedidoRepository detallePedidoRepository;
     @Autowired
@@ -253,17 +260,6 @@ public class ClienteServiceImpl extends BaseServiceImpl<Cliente, Long> implement
 
     }
 
-
-
-
-
-            Page<Cliente> clientes = clienteRepository.search(filtro, pageable);
-            return clientes;
-        }catch (Exception e){
-            throw  new Exception(e.getMessage());
-
-        }
-    }
 }
 
 
