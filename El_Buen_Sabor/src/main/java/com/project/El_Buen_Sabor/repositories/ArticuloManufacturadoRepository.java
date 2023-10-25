@@ -19,8 +19,5 @@ public interface ArticuloManufacturadoRepository extends BaseRepository<Articulo
     @Query(value= "SELECT am FROM ArticuloManufacturado am WHERE am.denominacion LIKE '%1%'")
     Page<ArticuloManufacturado> search(String filtro, Pageable pageable);
   
-  
-  //Harcodeo
-ArticuloManufacturado findByDenominacion(String denominacion);
-  //----
+
 }

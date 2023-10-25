@@ -15,9 +15,5 @@ public interface ArticuloManufacturadoService extends BaseService<ArticuloManufa
     Page<ArticuloManufacturado> search(String filtro, Pageable pageable) throws Exception;
   
   
- //Harcodeo------------
-    ArticuloManufacturado obtenerArticuloHamburguesa();
-    ArticuloManufacturado findByDenominacion(String denominacion);
-    //-------------
 
 }

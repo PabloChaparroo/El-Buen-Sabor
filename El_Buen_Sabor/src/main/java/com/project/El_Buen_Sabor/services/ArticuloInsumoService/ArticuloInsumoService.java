@@ -14,7 +14,7 @@ List<ArticuloInsumo> search(String filtro) throws Exception;
     Page<ArticuloInsumo> search(String filtro, Pageable pageable) throws Exception;
 
 
-//Harcodeo
+/*
     ArticuloInsumo obtenerArticuloInsumoCarne();
     ArticuloInsumo obtenerArticuloInsumoQueso();
 
@@ -23,5 +23,5 @@ List<ArticuloInsumo> search(String filtro) throws Exception;
     ArticuloInsumo obtenerArticuloInsumoLechuga();
     ArticuloInsumo findByDenominacion(String denominacion);
 //-------
-    
+    */
 }
