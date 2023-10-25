@@ -12,9 +12,9 @@ import java.util.List;
 @Repository
 public interface RubroArticuloRepository extends BaseRepository<RubroArticulo, Long> {
 
-    @Query(value= "SELECT ra FROM RubroArticulo ra WHERE ra.id like '%filtro%' or ra.denominacion like '%filtro%'")
+    @Query(value= "SELECT ra FROM RubroArticulo ra WHERE ra.denominacion like '%filtro%' or ra.id like '%filtro%' ")
     List<RubroArticulo> search(String filtro);
 
-    @Query(value= "SELECT ra FROM RubroArticulo ra WHERE ra.id like '%filtro%' or ra.denominacion like '%filtro%'")
+    @Query(value= "SELECT ra FROM RubroArticulo ra WHERE  ra.denominacion like '%filtro%' or ra.id like '%filtro%'")
     Page<RubroArticulo> search(String filtro, Pageable pageable);
 }
