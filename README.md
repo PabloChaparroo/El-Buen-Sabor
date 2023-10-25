@@ -15,7 +15,7 @@ En el repositorio de GitHub:
 
 ★ Archivo retro.md con el resultado de la retrospectiva
 
-★ Enlace al tablero de trabajo en Jira
+★ Enlace al tablero de trabajo en Trello: https://trello.com/b/qPQ2R4TS/sprint-4
 
 ★ Aplicación creada en Intelligent Idea:
 
@@ -23,7 +23,7 @@ En el repositorio de GitHub:
 
 ○      Archivo de properties
 
-○      Realizar el deploy en la nube
+○      Realizar el deploy en la nube: 
 
 ○      Paquete de entidades con sus anotaciones y relaciones
 
