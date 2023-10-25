@@ -21,7 +21,7 @@ public class DomicilioServiceImpl extends BaseServiceImpl<Domicilio, Long> imple
     public DomicilioServiceImpl(BaseRepository<Domicilio, Long> baseRepository) {
         super(baseRepository);
     }
-}
+
 
 
 
