@@ -55,6 +55,4 @@ public class Cliente extends Base {
     @JoinColumn(name = "fk_usuario")
     private Usuario usuario;
 
-
-
 }

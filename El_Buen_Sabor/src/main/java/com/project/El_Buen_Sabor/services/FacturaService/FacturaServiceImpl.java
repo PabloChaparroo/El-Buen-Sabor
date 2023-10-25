@@ -44,4 +44,14 @@ public class FacturaServiceImpl extends BaseServiceImpl<Factura,Long> implements
 
         }
     }
+
+    @Override
+    public List<Factura> calculoIngresos(String filtro) throws Exception {
+        try {
+            List<Factura> facturas = facturaRepository.search(filtro);
+            return facturas;
+        }catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
+    }
 }

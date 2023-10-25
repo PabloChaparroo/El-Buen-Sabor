@@ -43,4 +43,14 @@ public class ArticuloManufacturadoServiceImpl extends BaseServiceImpl<ArticuloMa
 
         }
     }
+
+    @Override
+    public List<ArticuloManufacturado> articuloManufacturado(String filtro) throws Exception {
+        try {
+            List<ArticuloManufacturado> articuloManufacturados = articuloManufacturadoRepository.search(filtro);
+            return articuloManufacturados;
+        }catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
+    }
 }
