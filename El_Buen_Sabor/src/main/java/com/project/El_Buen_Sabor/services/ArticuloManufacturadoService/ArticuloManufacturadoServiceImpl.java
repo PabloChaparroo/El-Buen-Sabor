@@ -76,8 +76,6 @@ public class ArticuloManufacturadoServiceImpl extends BaseServiceImpl<ArticuloMa
             throw new RuntimeException("La hamburguesa no fue encontrada en la base de datos.");
         }
     }
-//--------------
-
 
             @Override
             public List<ArticuloManufacturado> search (String filtro) throws Exception {
