@@ -24,6 +24,7 @@ public class DomicilioServiceImpl extends BaseServiceImpl<Domicilio, Long> imple
 
 
 
+
     @Override
     public List<Domicilio> search(String filtro) throws Exception {
         try {
@@ -46,3 +47,4 @@ public class DomicilioServiceImpl extends BaseServiceImpl<Domicilio, Long> imple
         }
     }
 }
+

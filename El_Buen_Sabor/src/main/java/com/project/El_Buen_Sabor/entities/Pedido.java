@@ -25,7 +25,7 @@ public class Pedido extends Base {
     @Column(name = "total")
     private double total;
     @Column(name = "horaEstimadaEntrega")
-    private Date horaEstimidaEntrega;
+    private String horaEstimidaEntrega;
     @Column(name = "fecha Alta")
     private Date fechaAlta;
     @Column(name = "fecha modificacion")

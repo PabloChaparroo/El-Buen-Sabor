@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Cascade;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,16 +26,25 @@ public class DetalleArticuloManufacturado extends Base{
 
 
 
-    //Relacion con Articulo Insumo
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    @JoinColumn(name = "fk_detalleArticuloManufacturado")
+    ////Relacion con Articulo Insumo
+    //@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    //@JoinColumn(name = "fk_detalleArticuloManufacturado")
 
-    private List<ArticuloInsumo> articuloInsumos = new ArrayList<ArticuloInsumo>();
+    //private List<ArticuloInsumo> articuloInsumos = new ArrayList<ArticuloInsumo>();
+    //Relacion con articulo manufacturado
+
+
+    @ManyToOne(cascade = CascadeType.REFRESH)
+    @JoinColumn(name = "fk_articuloInsumo")
+    private ArticuloInsumo articuloInsumo;
+
+
 
 
     //Relacion con articulo manufacturado
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "fk_detalleArticuloManufacturado")
     private ArticuloManufacturado articuloManufacturado;
+
 
 }
