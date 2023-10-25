@@ -13,8 +13,8 @@ import java.util.List;
 @Repository
 public interface ClienteRepository extends BaseRepository<Cliente, Long>{
 
-    @Query(value= "SELECT c FROM Cliente c WHERE c.nombre LIKE '%1%' OR c.apellido LIKE '%1%'")
+    @Query(value= "SELECT c FROM Cliente c WHERE c.nombre LIKE '%filtro%' OR c.apellido LIKE '%filtro%'")
     List<Cliente> search(String filtro);
-    @Query(value= "SELECT c FROM Cliente c WHERE c.nombre LIKE '%1%' OR c.apellido LIKE '%1%'")
+    @Query(value= "SELECT c FROM Cliente c WHERE c.nombre LIKE '%filtro%' OR c.apellido LIKE '%filtro%'")
     Page<Cliente> search(String filtro, Pageable pageable);
 }
