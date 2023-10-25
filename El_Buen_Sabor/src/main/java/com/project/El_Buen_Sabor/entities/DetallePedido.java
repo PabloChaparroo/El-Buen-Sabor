@@ -22,12 +22,12 @@ public class DetallePedido extends Base {
     private double subTotalCosto;
 
     //Relacion con ArticuloInsumo
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "fk_articuloInsumo")
     private ArticuloInsumo articuloInsumo;
 
     //Relacion con ArticuloManufacturado
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "fk_articuloManufacturado")
     private ArticuloManufacturado articuloManufacturado;
 
