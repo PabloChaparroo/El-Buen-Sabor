@@ -1,4 +1,4 @@
-FROM ubuntu:latest as build
+FROM alpine:latest as build
 
 RUN apk update
 RUN apk add openjdk17
@@ -7,7 +7,7 @@ COPY . .
 RUN chmod +x ./gradlew
 RUN ./gradlew bootJar --no-daemon
 
-FROM openjdk:17-ubuntu
+FROM openjdk:17-alpine
 EXPOSE 9000
 COPY --from=build ./build/libs/El_Buen_Sabor-0.0.1-SNAPSHOT.jar ./app.jar
 
