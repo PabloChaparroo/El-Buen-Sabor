@@ -15,9 +15,9 @@ import java.util.List;
 public interface ArticuloInsumoRepository extends BaseRepository<ArticuloInsumo,Long> {
 
 
-    @Query(value= "SELECT ai FROM ArticuloInsumo ai WHERE ai.denominacion LIKE '%1%'")
+    @Query(value= "SELECT ai FROM ArticuloInsumo ai WHERE ai.denominacion LIKE '%filtro%'")
     List<ArticuloInsumo> search(String filtro);
-    @Query(value= "SELECT ai FROM ArticuloInsumo ai WHERE  ai.denominacion LIKE '%1%'")
+    @Query(value= "SELECT ai FROM ArticuloInsumo ai WHERE  ai.denominacion LIKE '%filtro%'")
     Page<ArticuloInsumo> search(String filtro, Pageable pageable);
   
 //Harcodeo

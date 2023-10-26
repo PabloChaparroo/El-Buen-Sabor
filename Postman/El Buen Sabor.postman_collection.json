@@ -14,7 +14,8 @@
 					"name": "Get all",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": "http://localhost:8080/api/v1/usuarios"
 					},
 					"response": []
 				},
@@ -22,7 +23,8 @@
 					"name": "Get by ID",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": "http://localhost:8080/api/v1/usuarios/1"
 					},
 					"response": []
 				},
@@ -58,7 +60,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\n    \"id\": 4,\n    \"nombreUsuario\": \"Valentin13\",\n    \"contraseña\": \"1234\",\n    \"fechaAlta\": \"2023-10-23T03:00:00.000+00:00\",\n    \"fechaModificacion\": null,\n    \"fechaBaja\": null,\n    \"rol\": \"COCINERO\"\n}"
 						},
 						"url": "http://localhost:8080/api/v1/usuarios/2"
 					},
@@ -67,8 +69,9 @@
 				{
 					"name": "Delete",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/api/v1/usuarios/4"
 					},
 					"response": []
 				}
@@ -83,33 +86,19 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});"
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "{{base_url}}/info?id=1",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"info"
-							],
-							"query": [
-								{
-									"key": "id",
-									"value": "1"
-								}
-							]
-						},
+						"url": "http://localhost:8080/api/v1/clientes",
 						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
 					},
 					"response": []
@@ -118,7 +107,8 @@
 					"name": "Get One",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": "http://localhost:8080/api/v1/clientes/1"
 					},
 					"response": []
 				},
@@ -128,29 +118,35 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
 								"exec": [
 									"pm.test(\"Successful POST request\", function () {",
 									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
 									"});",
 									""
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
+							"raw": "{\n    \"nombre\": \"John\",\n    \"apellido\": \"Doe\",\n    \"telefono\": \"123456789\",\n    \"email\": \"john.doe@example.com\",\n    \"fechaAlta\": \"2023-10-15T12:34:56\", \n    \"fechaModificacion\": \"2023-10-15T12:34:56\",\n    \"fechaBaja\": \"2023-10-15T12:34:56\",\n    \"domicilios\": [\n        {\n            \"calle\": \"Street Name\",\n            \"numero\": 123\n        }\n    ],\n    \"pedido\": [\n        {\n            \"numero\": \"P001\",\n            \"fechaPedido\": \"2023-10-15T12:34:56\",\n            \"total\": 100.0\n        }\n    ],\n    \"usuario\": {\n        \"username\": \"johndoe\",\n        \"password\": \"securepassword\"\n    }\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "{{base_url}}/info",
+						"url": "http://localhost:8080/api/v1/clientes",
 						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
 					},
 					"response": []
@@ -161,43 +157,35 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
 								"exec": [
 									"pm.test(\"Successful PUT request\", function () {",
 									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
 									"});",
 									""
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
+							"raw": "   {\n        \"id\": 1,\n        \"nombre\": \"Pablo\",\n        \"apellido\": \"Chaparro\",\n        \"telefono\": \"2614181650\",\n        \"email\": \"pablobautic15@gmail.com\",\n        \"fechaAlta\": \"2023-10-23T03:00:00.000+00:00\",\n        \"fechaModificacion\": null,\n        \"fechaBaja\": null,\n        \"domicilios\": [\n            {\n                \"id\": 1,\n                \"calle\": \"Jose Ingenieros\",\n                \"numero\": \"913\",\n                \"localidad\": \"Guaymallén San Jose\"\n            },\n            {\n                \"id\": 2,\n                \"calle\": \"Moyano\",\n                \"numero\": \"234\",\n                \"localidad\": \"Las Heras Plumerillo\"\n            }\n        ],\n        \"pedido\": [],\n        \"usuario\": {\n            \"id\": 1,\n            \"nombreUsuario\": \"Pabloo11\",\n            \"contraseña\": \"12345\",\n            \"fechaAlta\": \"2023-10-23T03:00:00.000+00:00\",\n            \"fechaModificacion\": null,\n            \"fechaBaja\": null,\n            \"rol\": \"COCINERO\"\n        }\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": {
-							"raw": "{{base_url}}/info?id=1",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"info"
-							],
-							"query": [
-								{
-									"key": "id",
-									"value": "1"
-								}
-							]
-						},
+						"url": "http://localhost:8080/api/v1/clientes/1",
 						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
 					},
 					"response": []
@@ -208,13 +196,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
 								"exec": [
 									"pm.test(\"Successful DELETE request\", function () {",
 									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
 									"});",
 									""
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -230,21 +218,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{base_url}}/info?id=1",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"info"
-							],
-							"query": [
-								{
-									"key": "id",
-									"value": "1"
-								}
-							]
-						},
+						"url": "http://localhost:8080/api/v1/clientes/6",
 						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
 					},
 					"response": []
@@ -253,7 +227,27 @@
 					"name": "Search",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/clientes/search?filtro=Bernardo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"clientes",
+								"search"
+							],
+							"query": [
+								{
+									"key": "filtro",
+									"value": "Bernardo"
+								}
+							]
+						}
 					},
 					"response": []
 				},
@@ -261,7 +255,39 @@
 					"name": "searchPaged",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/clientes/searchPaged?filtro=Bernardo&page=0&sort=id,asc&size=5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"clientes",
+								"searchPaged"
+							],
+							"query": [
+								{
+									"key": "filtro",
+									"value": "Bernardo"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "sort",
+									"value": "id,asc"
+								},
+								{
+									"key": "size",
+									"value": "5"
+								}
+							]
+						}
 					},
 					"response": []
 				}
@@ -274,7 +300,8 @@
 					"name": "Get all",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": "http://localhost:8080/api/v1/pedidos"
 					},
 					"response": []
 				},
@@ -282,7 +309,8 @@
 					"name": "Get by ID",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": "http://localhost:8080/api/v1/pedidos/1"
 					},
 					"response": []
 				},
@@ -290,7 +318,18 @@
 					"name": "Create",
 					"request": {
 						"method": "POST",
-						"header": []
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fechaPedido\": \"2023-10-07T10:30:00\",\n    \"total\": 100.0,\n    \"horaEstimidaEntrega\": \"12:00 PM\",\n    \"fechaAlta\": \"2023-10-07T10:30:00\",\n    \"fechaModificacion\": \"2023-10-07T10:30:00\",\n    \"fechaBaja\": null,\n    \"estado\": \"PENDIENTE_PAGO\",\n    \"tipoEnvio\": \"DELIVERY\",\n    \"factura\": {\n        \"numero\": 1,\n        \"fechaFacturacion\": \"2023-10-07T10:30:00\",\n        \"mpPaymentID\": 123456789,\n        \"mpMerchantOrderId\": 987654321,\n        \"mpPreferentsId\": \"abcxyz123\",\n        \"mpPaymentType\": \"CREDIT_CARD\",\n        \"totalVenta\": 100.0,\n        \"horaEstimadaEntrega\": null,\n        \"fechaAlta\": null,\n        \"fechaModificacion\": null,\n        \"fechaBaja\": null,\n        \"formaPago\": \"MERCADO_PAGO\"\n    },\n    \"detallePedidos\": [\n        {\n            \"cantidad\": 2,\n            \"subTotal\": 50.0,\n            \"subTotalCosto\": 25.0,\n            \"articuloInsumo\": {\n                \"id\": 1,\n                \"denominacion\": \"Queso\",\n                \"urlImagen\": null,\n                \"stockActual\": 20.3,\n                \"stockMinimo\": 5.0,\n                \"precioCompra\": 2300.0,\n                \"fechaAlta\": null,\n                \"fechaModificacion\": null,\n                \"fechaBaja\": null,\n                \"unidadMedida\": null,\n                \"rubroArticulo\": null\n            },\n            \"articuloManufacturado\": {\n                \"id\": 1,\n                \"denominacion\": \"Hamburguesa\",\n                \"descripcion\": \"Hamburguesa con queso\",\n                \"tiempoEstimadoCocina\": 15.0,\n                \"costo\": 500.0,\n                \"precioVenta\": 750.0,\n                \"urlImagen\": null,\n                \"fechaAlta\": null,\n                \"fechaModificacion\": null,\n                \"fechaBaja\": null\n            }\n        }\n    ],\n    \"domicilio\": {\n        \"localidad\": \"Mendoza\",\n        \"calle\": \"San Martín\",\n        \"numero\": \"123\"\n    }\n}\n\n"
+						},
+						"url": "http://localhost:8080/api/v1/pedidos"
 					},
 					"response": []
 				},
@@ -317,7 +356,8 @@
 					"name": "Delete",
 					"request": {
 						"method": "DELETE",
-						"header": []
+						"header": [],
+						"url": "http://localhost:8080/api/v1/pedidos/1"
 					},
 					"response": []
 				}
@@ -330,7 +370,8 @@
 					"name": "Get all",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": "http://localhost:8080/api/v1/facturas"
 					},
 					"response": []
 				},
@@ -338,7 +379,8 @@
 					"name": "Get by ID",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": "http://localhost:8080/api/v1/facturas/2"
 					},
 					"response": []
 				},
@@ -346,7 +388,18 @@
 					"name": "Crear",
 					"request": {
 						"method": "POST",
-						"header": []
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"numero\": 1,\n    \"fechaFacturacion\": \"2023-10-07T10:30:00\",\n    \"mpPaymentID\": 123456789,\n    \"mpMerchantOrderId\": 987654321,\n    \"mpPreferentsId\": \"pref_123456\",\n    \"mpPaymentType\": \"credit_card\",\n    \"totalVenta\": 100.0,\n    \"horaEstimidaEntrega\": \"2023-10-07T12:00:00\",\n    \"formaPago\": \"MERCADO_PAGO\",\n    \"fechaAlta\": \"2023-10-07T10:30:00\",\n    \"fechaModificacion\": \"2023-10-07T10:30:00\",\n    \"fechaBaja\": null,\n    \"detalleFacturas\": [\n        {\n            \"cantidad\": 2,\n            \"subTotal\": 50.0,\n            \"articuloManufacturado\": {\n                \"nombre\": \"Hamburguesa\",\n                \"precioVenta\": 25.0\n            }\n        },\n        {\n            \"cantidad\": 3,\n            \"subTotal\": 50.0,\n            \"articuloManufacturado\": {\n                \"nombre\": \"Pizza\",\n                \"precioVenta\": 16.67\n            }\n        }\n    ]\n}\n"
+						},
+						"url": "http://localhost:8080/api/v1/facturas"
 					},
 					"response": []
 				},
@@ -354,7 +407,17 @@
 					"name": "Save",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 2,\n    \"numero\": 3,\n    \"fechaFacturacion\": \"2023-10-07T10:30:00.000+00:00\",\n    \"mpPaymentID\": 123456789,\n    \"mpMerchantOrderId\": 987654321,\n    \"mpPreferentsId\": \"pref_123456\",\n    \"mpPaymentType\": \"credit_card\",\n    \"totalVenta\": 100.0,\n    \"horaEstimidaEntrega\": \"2023-10-07T12:00:00.000+00:00\",\n    \"fechaAlta\": \"2023-10-07T10:30:00.000+00:00\",\n    \"fechaModificacion\": \"2023-10-07T10:30:00.000+00:00\",\n    \"fechaBaja\": null,\n    \"formaPago\": \"MERCADO_PAGO\",\n    \"detalleFacturas\": [\n        {\n            \"id\": 1,\n            \"cantidad\": 2,\n            \"subTotal\": 50.0,\n            \"articuloInsumo\": null,\n            \"articuloManufacturado\": {\n                \"id\": 3,\n                \"denominacion\": null,\n                \"descripcion\": null,\n                \"tiempoEstimadoCocina\": 0.0,\n                \"costo\": 0.0,\n                \"precioVenta\": 25.0,\n                \"urlImagen\": null,\n                \"fechaAlta\": null,\n                \"fechaModificacion\": null,\n                \"fechaBaja\": null\n            }\n        },\n        {\n            \"id\": 2,\n            \"cantidad\": 3,\n            \"subTotal\": 50.0,\n            \"articuloInsumo\": null,\n            \"articuloManufacturado\": {\n                \"id\": 4,\n                \"denominacion\": null,\n                \"descripcion\": null,\n                \"tiempoEstimadoCocina\": 0.0,\n                \"costo\": 0.0,\n                \"precioVenta\": 16.67,\n                \"urlImagen\": null,\n                \"fechaAlta\": null,\n                \"fechaModificacion\": null,\n                \"fechaBaja\": null\n            }\n        }\n    ]\n}"
+						},
 						"url": "http://localhost:8080/api/v1/facturas/2"
 					},
 					"response": []
@@ -377,7 +440,8 @@
 					"name": "Get all",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": "http://localhost:8080/api/v1/pedidoproductos"
 					},
 					"response": []
 				},
@@ -385,7 +449,8 @@
 					"name": "Get by ID",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": "http://localhost:8080/api/v1/pedidoproductos/1"
 					},
 					"response": []
 				},
@@ -393,7 +458,17 @@
 					"name": "Create",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cantidad\": 2,\n    \"subTotal\": 50.0,\n    \"subTotalCosto\": 25.0,\n    \"articuloInsumo\": {\n        \"id\": 1,\n        \"denominacion\": \"Queso\",\n        \"urlImagen\": null,\n        \"stockActual\": 20.3,\n        \"stockMinimo\": 5.0,\n        \"precioCompra\": 2300.0,\n        \"fechaAlta\": null,\n        \"fechaModificacion\": null,\n        \"fechaBaja\": null,\n        \"unidadMedida\": null,\n        \"rubroArticulo\": null\n    },\n    \"articuloManufacturado\": {\n        \"id\": 1,\n        \"denominacion\": \"Hamburguesa\",\n        \"descripcion\": \"Hamburguesa con queso\",\n        \"tiempoEstimadoCocina\": 15.0,\n        \"costo\": 500.0,\n        \"precioVenta\": 750.0,\n        \"urlImagen\": null,\n        \"fechaAlta\": null,\n        \"fechaModificacion\": null,\n        \"fechaBaja\": null\n    }\n}\n\n"
+						},
 						"url": "http://localhost:8080/api/v1/pedidoproductos"
 					},
 					"response": []
@@ -411,7 +486,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\n    \"id\": 1,\n    \"cantidad\": 2,\n    \"subTotal\": 2250.0,\n    \"subTotalCosto\": 0.0,\n    \"articuloInsumo\": null,\n    \"articuloManufacturado\": {\n        \"id\": 1,\n        \"denominacion\": \"Hamburguesa\",\n        \"descripcion\": \"Hamburguesa con queso\",\n        \"tiempoEstimadoCocina\": 15.0,\n        \"costo\": 500.0,\n        \"precioVenta\": 750.0,\n        \"urlImagen\": null,\n        \"fechaAlta\": null,\n        \"fechaModificacion\": null,\n        \"fechaBaja\": null\n    }\n}"
 						},
 						"url": "http://localhost:8080/api/v1/pedidoproductos/1"
 					},
@@ -444,7 +519,8 @@
 					"name": "Get by ID",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": "http://localhost:8080/api/v1/unidadMedidas/2"
 					},
 					"response": []
 				},
@@ -504,7 +580,8 @@
 					"name": "Get all",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": "http://localhost:8080/api/v1/rubros"
 					},
 					"response": []
 				},
@@ -512,7 +589,8 @@
 					"name": "Get by ID",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": "http://localhost:8080/api/v1/rubros/2"
 					},
 					"response": []
 				},
@@ -529,7 +607,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"denominacion\": \"Example Category\",\n    \"fechaAlta\": \"2023-10-26T08:00:00\",\n    \"fechaModificacion\": \"2023-10-26T08:00:00\",\n    \"fechaBaja\": null,\n    \"rubroPadre\": null,\n    \"subRubros\": []\n}\n"
+							"raw": "{\n    \"denominacion\": \"Hamburguesa\",\n    \"fechaAlta\": \"2023-10-26T08:00:00\",\n    \"fechaModificacion\": \"2023-10-26T08:00:00\",\n    \"fechaBaja\": null,\n    \"rubroPadre\": null,\n    \"subRubros\": []\n}\n"
 						},
 						"url": "http://localhost:8080/api/v1/rubros"
 					},
@@ -572,7 +650,8 @@
 					"name": "Get all",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": "http://localhost:8080/api/v1/articuloManufacturados"
 					},
 					"response": []
 				},
@@ -589,7 +668,18 @@
 					"name": "Crear",
 					"request": {
 						"method": "POST",
-						"header": []
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"denominacion\": \"Hamburguesa monstrupsa\",\n    \"descripcion\": \"Una hamburguesa con un sabor terrorífico\",\n    \"tiempoEstimadoCocina\": 30.0,\n    \"costo\": 10.0,\n    \"precioVenta\": 25.0,\n    \"urlImagen\": \"imagen de prueba\",\n    \"fechaAlta\": \"2023-10-26T08:00:00\",\n    \"fechaModificacion\": \"2023-10-26T08:00:00\",\n    \"fechaBaja\": null\n}\n"
+						},
+						"url": "http://localhost:8080/api/v1/articuloManufacturados"
 					},
 					"response": []
 				},
@@ -604,6 +694,10 @@
 								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"denominacion\": \"Hamburguesa\",\n    \"descripcion\": \"Hamburguesa con mucho queso\",\n    \"tiempoEstimadoCocina\": 15.0,\n    \"costo\": 500.0,\n    \"precioVenta\": 750.0,\n    \"urlImagen\": null,\n    \"fechaAlta\": null,\n    \"fechaModificacion\": null,\n    \"fechaBaja\": null\n}"
+						},
 						"url": "http://localhost:8080/api/v1/articuloManufacturados/1"
 					},
 					"response": []
@@ -626,7 +720,8 @@
 					"name": "Get all",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": "http://localhost:8080/api/v1/articuloInsumos"
 					},
 					"response": []
 				},
@@ -634,7 +729,8 @@
 					"name": "Get by ID",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": "http://localhost:8080/api/v1/articuloInsumos/1"
 					},
 					"response": []
 				},
@@ -651,9 +747,9 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"denominacion\": \"Carne mólida\",\n    \"urlImagen\": \"imagen de ejemplo\",\n    \"stockActual\": 100.0,\n    \"stockMinimo\": 10.0,\n    \"precioCompra\": 50.0,\n    \"fechaAlta\": \"2023-10-26T08:00:00\",\n    \"fechaModificacion\": \"2023-10-26T08:00:00\",\n    \"fechaBaja\": null,\n    \"unidadMedida\": {\n        \"denominacion\": \"gramos\",\n        \"abreviattura\": \"g\",\n        \"fechaAlta\": \"2023-10-26T08:00:00\",\n        \"fechaModificacion\": \"2023-10-26T08:00:00\",\n        \"fechaBaja\": null\n    },\n    \"rubroArticulo\": {\n        \"denominacion\": \"Example Category\",\n        \"fechaAlta\": \"2023-10-26T08:00:00\",\n        \"fechaModificacion\": \"2023-10-26T08:00:00\",\n        \"fechaBaja\": null,\n        \"rubroPadre\": null,\n        \"subRubros\": []\n    }\n}\n"
+							"raw": "{\n    \"denominacion\": \"Carne mólida\",\n    \"urlImagen\": \"imagen de ejemplo\",\n    \"stockActual\": 100.0,\n    \"stockMinimo\": 10.0,\n    \"precioCompra\": 50.0,\n    \"fechaAlta\": \"2023-10-26T08:00:00\",\n    \"fechaModificacion\": \"2023-10-26T08:00:00\",\n    \"fechaBaja\": null,\n    \"unidadMedida\": {\n        \"denominacion\": \"gramos\",\n        \"abreviattura\": \"g\",\n        \"fechaAlta\": \"2023-10-26T08:00:00\",\n        \"fechaModificacion\": \"2023-10-26T08:00:00\",\n        \"fechaBaja\": null\n    },\n    \"rubroArticulo\": {\n        \"denominacion\": \"Cocina\",\n        \"fechaAlta\": \"2023-10-26T08:00:00\",\n        \"fechaModificacion\": \"2023-10-26T08:00:00\",\n        \"fechaBaja\": null,\n        \"rubroPadre\": null,\n        \"subRubros\": []\n    }\n}\n"
 						},
-						"url": "http://localhost:8080/api/v1/articuloinsumos"
+						"url": "http://localhost:8080/api/v1/articuloInsumos"
 					},
 					"response": []
 				},
@@ -661,7 +757,17 @@
 					"name": "Save",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"denominacion\": \"queso\",\n    \"urlImagen\": null,\n    \"stockActual\": 20.3,\n    \"stockMinimo\": 5.0,\n    \"precioCompra\": 2300.0,\n    \"fechaAlta\": null,\n    \"fechaModificacion\": null,\n    \"fechaBaja\": null,\n    \"unidadMedida\": null,\n    \"rubroArticulo\": null\n}"
+						},
 						"url": "http://localhost:8080/api/v1/articuloInsumos"
 					},
 					"response": []
@@ -684,7 +790,8 @@
 					"name": "Get all",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": "http://localhost:8080/api/v1/domicilios"
 					},
 					"response": []
 				},
@@ -753,7 +860,8 @@
 					"name": "Get all",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": "http://localhost:8080/api/v1/detalleFacturas"
 					},
 					"response": []
 				},
@@ -761,7 +869,8 @@
 					"name": "Get by ID",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": "http://localhost:8080/api/v1/detalleFacturas/1"
 					},
 					"response": []
 				},
@@ -778,7 +887,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"cantidad\": 3,\n    \"subTotal\": 50.0,\n    \"articuloInsumo\": {\n        \"id\": 1,\n        \"denominacion\": \"Queso\",\n        \"urlImagen\": null,\n        \"stockActual\": 20.3,\n        \"stockMinimo\": 5.0,\n        \"precioCompra\": 2300.0,\n        \"fechaAlta\": null,\n        \"fechaModificacion\": null,\n        \"fechaBaja\": null,\n        \"unidadMedida\": null,\n        \"rubroArticulo\": null\n    },\n    \"articuloManufacturado\": {\n        \"id\": 1,\n        \"denominacion\": \"Hamburguesa\",\n        \"descripcion\": \"Hamburguesa con queso\",\n        \"tiempoEstimadoCocina\": 15.0,\n        \"costo\": 500.0,\n        \"precioVenta\": 750.0,\n        \"urlImagen\": null,\n        \"fechaAlta\": null,\n        \"fechaModificacion\": null,\n        \"fechaBaja\": null\n    }\n}\n"
+							"raw": "{\n    \"cantidad\": 3,\n    \"subTotal\": 50.0,\n    \"articuloInsumo\":null,\n    \"articuloManufacturado\": {\n        \"denominacion\": null,\n        \"descripcion\": null,\n        \"tiempoEstimadoCocina\": 0.0,\n        \"costo\": 0.0,\n        \"precioVenta\": 25.0,\n        \"urlImagen\": null,\n        \"fechaAlta\": null,\n        \"fechaModificacion\": null,\n        \"fechaBaja\": null\n    }\n}\n"
 						},
 						"url": "http://localhost:8080/api/v1/detalleFacturas"
 					},
@@ -795,6 +904,10 @@
 								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"cantidad\": 3,\n    \"subTotal\": 50.0,\n    \"articuloInsumo\": null,\n    \"articuloManufacturado\": {\n        \"id\": 3,\n        \"denominacion\": null,\n        \"descripcion\": null,\n        \"tiempoEstimadoCocina\": 0.0,\n        \"costo\": 0.0,\n        \"precioVenta\": 25.0,\n        \"urlImagen\": null,\n        \"fechaAlta\": null,\n        \"fechaModificacion\": null,\n        \"fechaBaja\": null\n    }\n}"
+						},
 						"url": "http://localhost:8080/api/v1/detalleFacturas/1"
 					},
 					"response": []
@@ -817,7 +930,8 @@
 					"name": "Get all",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": "http://localhost:8080/api/v1/detalleArticuloManufacturados"
 					},
 					"response": []
 				},
@@ -825,7 +939,8 @@
 					"name": "Get by ID",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": "http://localhost:8080/api/v1/detalleArticuloManufacturados/1"
 					},
 					"response": []
 				},

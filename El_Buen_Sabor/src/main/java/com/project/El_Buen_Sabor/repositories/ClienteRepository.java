@@ -8,23 +8,20 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import com.project.El_Buen_Sabor.entities.Cliente;
 
-import java.util.Date;
 import java.util.List;
 
 @Repository
 public interface ClienteRepository extends BaseRepository<Cliente, Long>{
 
-    @Query(value= "SELECT c FROM Cliente c WHERE c.nombre LIKE '%1%' OR c.apellido LIKE '%1%'")
-    List<Cliente> search(String filtro);
-    @Query(value= "SELECT c FROM Cliente c WHERE c.nombre LIKE '%1%' OR c.apellido LIKE '%1%'")
-    Page<Cliente> search(String filtro, Pageable pageable);
     @Query(
-            value= "SELECT c.nombre AS cliente_nombre, COUNT(p.id) AS cantidad_pedidos FROM Cliente c JOIN Pedido p ON c.id = p.id WHERE p.fechaPedido BETWEEN :fechaInicio AND :fechaFin GROUP BY c.id ORDER BY cantidad_pedidos DESC",
-            nativeQuery = true)
-    List<Cliente> rankingCliente(@Param("fechaInicio") Date fechaInicio, @Param("fechaFin") Date fechaFin);
-
+            value = "SELECT * FROM Cliente WHERE Cliente.nombre LIKE %:filtro% OR Cliente.apellido LIKE %:filtro%",
+            nativeQuery=true
+    )
+    List<Cliente> search(@Param("filtro") String filtro);
     @Query(
-            value= "SELECT c.nombre AS cliente_nombre FROM Cliente c JOIN Pedido p ON c.id = p.id WHERE p.fechaPedido BETWEEN :fechaInicio AND :fechaFin ORDER BY p.fechaPedido DESC",
-            nativeQuery = true)
-    List<Cliente> pedidosPorFecha(@Param("fechaInicio") Date fechaInicio, @Param("fechaFin") Date fechaFin);
+            value = "SELECT * FROM Cliente WHERE Cliente.nombre LIKE %:filtro% OR Cliente.apellido LIKE %:filtro%",
+            countQuery = "SELECT count(*) FROM CLiente",
+            nativeQuery=true
+    )
+    Page<Cliente> searchPaged(@Param("filtro") String filtro, Pageable pageable);
 }
