@@ -1,66 +1,59 @@
 package com.project.El_Buen_Sabor.controllers;
 
 import com.project.El_Buen_Sabor.entities.Cliente;
-import com.project.El_Buen_Sabor.services.ClienteService;
+import com.project.El_Buen_Sabor.services.ClienteService.ClienteServiceImpl;
+import org.springframework.data.domain.Pageable;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+import java.util.List;
+
 @RestController
 @CrossOrigin(origins = "*")//permite el acceso desde distintos clientes
-@RequestMapping(path = "api/v1/cliente")
+@RequestMapping(path = "api/v1/clientes")
 
-public class ClienteController {
-    private ClienteService clienteService;
+public class  ClienteController extends BaseControllerImpl<Cliente, ClienteServiceImpl> {
 
-    public ClienteController(ClienteService clienteService) {
-        this.clienteService = clienteService;
-    }
-
-    //metodos
-    @GetMapping("")
-    public ResponseEntity<?> getAll() {
+    @GetMapping("/search")
+    public ResponseEntity<?> search(@RequestParam String filtro){
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(clienteService.findAll());
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\"Error, intente mas tarde.\"}");   //mensaje en formato Json
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.search(filtro));
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
         }
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<?> getOne(@PathVariable Long id) {
+    @GetMapping("/searchPaged")
+    public ResponseEntity<?> search(@RequestParam String filtro, Pageable pageable) {
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(clienteService.findById(id));
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.search(filtro, pageable));
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\"Error, intente mas tarde.\"}");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
         }
     }
 
-    @PostMapping("")
-    public ResponseEntity<?> save(@RequestBody Cliente entity){
-        try{
-            return ResponseEntity.status(HttpStatus.OK).body(clienteService.save(entity));
+    @GetMapping("/rankingCliente")
+    public ResponseEntity<?> rankingCliente(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fechaInicio, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fechaFin) {
+        try {
+            List<Cliente> clientes = servicio.rankingCliente(fechaInicio, fechaFin);
+            return ResponseEntity.status(HttpStatus.OK).body(clientes);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error\":\"Error al guardar, intente mas tarde.\"}");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\": \"" + e.getMessage() + "\"}");
         }
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable Long id,@RequestBody Cliente entity){
-        try{
-            return ResponseEntity.status(HttpStatus.OK).body(clienteService.update(id, entity));
+    @GetMapping("/pedidosPorFecha")
+    public ResponseEntity<?> pedidosPorFecha(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fechaInicio, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fechaFin) {
+        try {
+            List<Cliente> clientes = servicio.pedidosPorFecha(fechaInicio, fechaFin);
+            return ResponseEntity.status(HttpStatus.OK).body(clientes);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error\":\"Error al actualizar, intente mas tarde.\"}");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\": \"" + e.getMessage() + "\"}");
         }
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable Long id) {
-        try{
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(clienteService.delete(id));
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error\":\"Error al eliminar, intente mas tarde.\"}");
-        }
-    }
 
 }
