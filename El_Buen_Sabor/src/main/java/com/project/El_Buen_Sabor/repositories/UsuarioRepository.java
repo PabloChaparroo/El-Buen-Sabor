@@ -11,9 +11,9 @@ import java.util.List;
 @Repository
 public interface UsuarioRepository extends BaseRepository<Usuario, Long> {
 
-    @Query(value= "SELECT u FROM Usuario u WHERE u.nombreUsuario like '%filtro%' or u.rol like '%filtro%'")
+    @Query(value= "SELECT u FROM Usuario u WHERE u.nombreUsuario like '%1%' or u.rol like '%1%'")
     List<Usuario> search(String filtro);
 
-    @Query(value= "SELECT u FROM Usuario u WHERE u.nombreUsuario like '%filtro%' or u.rol like '%filtro%'")
+    @Query(value= "SELECT u FROM Usuario u WHERE u.nombreUsuario like '%1%' or u.rol like '%1%'")
     Page<Usuario> search(String filtro, Pageable pageable);
 }

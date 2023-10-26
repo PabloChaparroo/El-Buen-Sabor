@@ -31,6 +31,20 @@ public class ElBuenSaborApplication {
 		System.out.println("--------------------ESTÁ FUNCIONANDO CORRECTAMENTE------------------------");
 	}
 
+		@PostConstruct
+		public void init () {
+			try {
+				articuloManufacturadoService.init();
+				articuloInsumoService.initArticuloInsumo();
+				detalleArticuloManufacturadoService.intitDetalleArticuloManufacturado();
+				clienteService.initClientes();
 
+
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("No hay nada en la base de datos");
+
+			}
+		}
 	}
 
