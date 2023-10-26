@@ -28,7 +28,6 @@ public class ClienteServiceImpl extends BaseServiceImpl<Cliente, Long> implement
         this.clienteRepository = clienteRepository;
     }
 
-
     @Override
     public List<Cliente> search(String filtro) throws Exception {
         try {
@@ -44,7 +43,7 @@ public class ClienteServiceImpl extends BaseServiceImpl<Cliente, Long> implement
     @Override
     public Page<Cliente> search(String filtro, Pageable pageable) throws Exception {
         try {
-            Page<Cliente> clientes = clienteRepository.search(filtro, pageable);
+            Page<Cliente> clientes = clienteRepository.searchPaged(filtro, pageable);
             return clientes;
         }catch (Exception e){
             throw  new Exception(e.getMessage());
@@ -52,6 +51,26 @@ public class ClienteServiceImpl extends BaseServiceImpl<Cliente, Long> implement
         }
     }
 
+
+    public List<Cliente> rankingCliente(Date fechaInicio, Date fechaFin) throws Exception {
+        try {
+            List<Cliente> clientes = clienteRepository.rankingCliente(fechaInicio, fechaFin);
+            return clientes;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+
+
+    public List<Cliente> pedidosPorFecha(Date fechaInicio, Date fechaFin) throws Exception {
+        try {
+            List<Cliente> clientes = clienteRepository.pedidosPorFecha(fechaInicio, fechaFin);
+            return clientes;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
 
 
     @Autowired
