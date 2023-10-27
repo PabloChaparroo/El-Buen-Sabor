@@ -19,7 +19,6 @@ public class ArticuloInsumoServiceImpl extends BaseServiceImpl<ArticuloInsumo, L
     private  ArticuloInsumoRepository articuloInsumoRepository;
 
     public ArticuloInsumoServiceImpl(BaseRepository<ArticuloInsumo, Long> baseRepository, ArticuloInsumoRepository articuloInsumoRepository) {
-
         super(baseRepository);
         this.articuloInsumoRepository = articuloInsumoRepository;
     }

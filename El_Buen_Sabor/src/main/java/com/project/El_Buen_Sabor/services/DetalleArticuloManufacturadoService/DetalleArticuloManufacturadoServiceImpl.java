@@ -24,8 +24,6 @@ public class DetalleArticuloManufacturadoServiceImpl extends BaseServiceImpl<Det
 
     private DetalleArticuloManufacturadoRepository detalleArticuloManufacturadoRepository;
 
-
-
     @Autowired
     public DetalleArticuloManufacturadoServiceImpl(BaseRepository<DetalleArticuloManufacturado, Long> baseRepository, DetalleArticuloManufacturadoRepository detalleArticuloManufacturadoRepository) {
         super(baseRepository);
@@ -33,35 +31,6 @@ public class DetalleArticuloManufacturadoServiceImpl extends BaseServiceImpl<Det
     }
 
 
-    //Harcodeo------------------------------------------------------------
-    @Autowired
-       private ArticuloManufacturadoService articuloManufacturadoService;
-    @Autowired
-    private ArticuloInsumoService articuloInsumoService;
-
-    public void guardarDetallesArticuloManufacturado(List<DetalleArticuloManufacturado> detalles) {
-        detalleArticuloManufacturadoRepository.saveAll(detalles);
-
-    }
-
-
-
-    //public void intitDetalleArticuloManufacturado() {
-    //    try {
-    //        ArticuloManufacturado articuloManufacturadoHamburguesa = articuloManufacturadoService.obtenerArticuloHamburguesa();
-    //        ArticuloInsumo articuloInsumoCarne = articuloInsumoService.obtenerArticuloInsumoCarne();
-    //        ArticuloInsumo articuloInsumoPan = articuloInsumoService.obtenerArticuloInsumoPan();
-    //        ArticuloInsumo articuloInsumoQueso = articuloInsumoService.obtenerArticuloInsumoQueso();
-    //        ArticuloInsumo articuloInsumoLechuga = articuloInsumoService.obtenerArticuloInsumoLechuga();
-    //        ArticuloInsumo articuloInsumoTomate = articuloInsumoService.obtenerArticuloInsumoTomate();
-    //        List<DetalleArticuloManufacturado> detalles = new ArrayList<>();
-
-
-
-
-          
-      
-                 
     @Override
     public List<DetalleArticuloManufacturado> search(String filtro) throws Exception {
         try {

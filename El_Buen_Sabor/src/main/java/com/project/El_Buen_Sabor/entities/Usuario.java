@@ -18,15 +18,15 @@ import java.util.List;
 @Table(name = "Usuario")
 public class Usuario extends Base {
 
-    @Column(name = "nombre usuario")
+    @Column(name = "nombre_usuario")
     private String nombreUsuario;
     @Column(name = "contraseña")
     private String contraseña;
-    @Column(name = "fecha Alta")
+    @Column(name = "fecha_Alta")
     private Date fechaAlta;
-    @Column(name = "fecha modificacion")
+    @Column(name = "fecha_Modificacion")
     private Date fechaModificacion;
-    @Column(name = "fechaBaja")
+    @Column(name = "fecha_Baja")
     private Date fechaBaja;
 
     private Rol rol;
