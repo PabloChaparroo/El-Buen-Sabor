@@ -11,15 +11,12 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
 @DataJpaTest
 public class ClienteRepositoryTest {
 
     @Autowired
     private EntityManager entityManager;
-    @Autowired
-    private ClienteRepository personaRepository;
-
+    
     @Test
     void testSearchString(){
         Cliente cliente = new Cliente();
@@ -32,10 +29,15 @@ public class ClienteRepositoryTest {
         entityManager.persist(cliente);
         entityManager.flush();
 
+
         assertEquals(listaEnviada, personaRepository.searchNative("Pablo"));
         assertEquals(listaEnviada, personaRepository.searchNative("Chaparro"));
 
     }
 
 
+        assertEquals(listaEnviada, clienteRepository.search("Pablo"));
+        assertEquals(listaEnviada, clienteRepository.search("Chaparro"));
+
+    }
 }

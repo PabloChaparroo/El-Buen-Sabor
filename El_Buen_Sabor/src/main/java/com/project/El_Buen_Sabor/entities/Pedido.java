@@ -20,8 +20,8 @@ import java.util.List;
 public class Pedido extends Base {
 
     //Atributos
-    @Column(name = "fecha Pedido")
-    private Date fechaPedido;
+    @Column(name = "fecha pedido")
+    private Date fechapedido;
     @Column(name = "total")
     private double total;
     @Column(name = "horaEstimadaEntrega")

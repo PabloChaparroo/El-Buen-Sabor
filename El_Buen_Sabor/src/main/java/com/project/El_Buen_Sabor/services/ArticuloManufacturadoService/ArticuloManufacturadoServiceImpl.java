@@ -36,6 +36,7 @@ public class ArticuloManufacturadoServiceImpl extends BaseServiceImpl<ArticuloMa
         }
     }
 
+
     @Override
     public Page<ArticuloManufacturado> search(String filtro, Pageable pageable) throws Exception {
         try {
@@ -43,6 +44,22 @@ public class ArticuloManufacturadoServiceImpl extends BaseServiceImpl<ArticuloMa
             Page<ArticuloManufacturado> articuloManufacturados = articuloManufacturadoRepository.search(filtro, pageable);
             return articuloManufacturados;
         } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+        }catch (Exception e){
+            throw  new Exception(e.getMessage());
+
+        }
+    }
+
+    @Override
+    public List<ArticuloManufacturado> articuloManufacturado(String filtro) throws Exception {
+        try {
+            List<ArticuloManufacturado> articuloManufacturados = articuloManufacturadoRepository.search(filtro);
+            return articuloManufacturados;
+        }catch (Exception e){
             throw new Exception(e.getMessage());
         }
     }
