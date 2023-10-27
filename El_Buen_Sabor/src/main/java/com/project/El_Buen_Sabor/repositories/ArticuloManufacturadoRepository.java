@@ -21,13 +21,9 @@ public interface ArticuloManufacturadoRepository extends BaseRepository<Articulo
     @Query(value= "SELECT * FROM Artículo_Manufacturado am WHERE am.denominacion LIKE '%1%'", nativeQuery = true)
     Page<ArticuloManufacturado> search(String filtro, Pageable pageable);
 
-
     @Query(
             value= "SELECT am FROM ArticuloManufacturado am JOIN DetallePedido dp ON am.id=dp.id JOIN Pedido p ON dp.id=p.id WHERE p.fechaPedido BETWEEN '2023-01-01' AND '2023-10-01' ORDER BY dp.cantidad DESC",
             nativeQuery = true)
     List<ArticuloManufacturado> articuloManufacturado(@Param("filtro")String filtro);
-  
-  //Harcodeo
-ArticuloManufacturado findByDenominacion(String denominacion);
-  //----
+
 }

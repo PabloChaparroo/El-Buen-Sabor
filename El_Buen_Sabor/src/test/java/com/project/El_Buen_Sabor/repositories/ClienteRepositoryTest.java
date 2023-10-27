@@ -16,9 +16,7 @@ public class ClienteRepositoryTest {
 
     @Autowired
     private EntityManager entityManager;
-    @Autowired
-    private ClienteRepository clienteRepository;
-
+    
     @Test
     void testSearchString(){
         Cliente cliente = new Cliente();
@@ -31,9 +29,15 @@ public class ClienteRepositoryTest {
         entityManager.persist(cliente);
         entityManager.flush();
 
+
+        assertEquals(listaEnviada, personaRepository.searchNative("Pablo"));
+        assertEquals(listaEnviada, personaRepository.searchNative("Chaparro"));
+
+    }
+
+
         assertEquals(listaEnviada, clienteRepository.search("Pablo"));
         assertEquals(listaEnviada, clienteRepository.search("Chaparro"));
 
     }
-
 }

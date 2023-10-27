@@ -38,20 +38,20 @@ public class Cliente extends Base {
     private Date fechaBaja;
 
     //Relacion a domicilio
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_cliente")
 
     private List<Domicilio> domicilios = new ArrayList<Domicilio>();
 
 
     //Relacion con pedido
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_cliente")
 
     private List<Pedido> pedido = new ArrayList<Pedido>();
 
     //Relacion con Usuario 1 a 1
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)        //orphanRemoval sirve para que si eliminamos un pedido tambien se eliminen los pedidosProducto asociados a ese pedido
     @JoinColumn(name = "fk_usuario")
     private Usuario usuario;
 
