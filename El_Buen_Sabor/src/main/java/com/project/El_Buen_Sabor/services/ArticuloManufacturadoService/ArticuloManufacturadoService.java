@@ -16,10 +16,4 @@ public interface ArticuloManufacturadoService extends BaseService<ArticuloManufa
 
     List<ArticuloManufacturado> articuloManufacturado(String filtro) throws Exception;
 
-
- //Harcodeo------------
-    ArticuloManufacturado obtenerArticuloHamburguesa();
-    ArticuloManufacturado findByDenominacion(String denominacion);
-    //-------------
-
 }

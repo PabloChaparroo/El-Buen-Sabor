@@ -20,9 +20,6 @@ public interface ArticuloInsumoRepository extends BaseRepository<ArticuloInsumo,
     @Query(value= "SELECT ai FROM ArticuloInsumo ai WHERE ai.denominacion LIKE '%filtro%'")
     Page<ArticuloInsumo> search(String filtro, Pageable pageable);
   
-//Harcodeo
-    ArticuloInsumo findByDenominacion(String denominacion);
-//----
-  
+
   
 }

@@ -27,14 +27,13 @@ public class  ClienteController extends BaseControllerImpl<Cliente, ClienteServi
     }
 
     @GetMapping("/searchPaged")
-    public ResponseEntity<?> search(@RequestParam String filtro, Pageable pageable) {
+    public ResponseEntity<?> search(@RequestParam String filtro, Pageable pageable){
         try {
             return ResponseEntity.status(HttpStatus.OK).body(servicio.search(filtro, pageable));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
         }
     }
-
     @GetMapping("/rankingCliente")
     public ResponseEntity<?> rankingCliente(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fechaInicio, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fechaFin) {
         try {
@@ -44,7 +43,6 @@ public class  ClienteController extends BaseControllerImpl<Cliente, ClienteServi
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\": \"" + e.getMessage() + "\"}");
         }
     }
-
     @GetMapping("/pedidosPorFecha")
     public ResponseEntity<?> pedidosPorFecha(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fechaInicio, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fechaFin) {
         try {
@@ -54,6 +52,4 @@ public class  ClienteController extends BaseControllerImpl<Cliente, ClienteServi
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\": \"" + e.getMessage() + "\"}");
         }
     }
-
-
 }

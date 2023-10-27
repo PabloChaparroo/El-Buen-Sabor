@@ -24,27 +24,14 @@ public class DetalleArticuloManufacturado extends Base{
     private double cantidad;
 
 
-
-
-    ////Relacion con Articulo Insumo
-    //@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    //@JoinColumn(name = "fk_detalleArticuloManufacturado")
-
-    //private List<ArticuloInsumo> articuloInsumos = new ArrayList<ArticuloInsumo>();
-    //Relacion con articulo manufacturado
-
-
-    @ManyToOne(cascade = CascadeType.REFRESH)
+    //Relacion con articulo Insumo
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_articuloInsumo")
     private ArticuloInsumo articuloInsumo;
 
-
-
-
     //Relacion con articulo manufacturado
-    @ManyToOne(cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "fk_detalleArticuloManufacturado")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_ArticuloManufacturado")
     private ArticuloManufacturado articuloManufacturado;
-
 
 }

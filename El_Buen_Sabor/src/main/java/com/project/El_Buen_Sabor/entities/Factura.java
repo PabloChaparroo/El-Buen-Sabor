@@ -19,24 +19,25 @@ public class Factura extends Base {
 
     @Column(name = "numero")
     private int numero;
-    @Column(name = "fecha facturacion")
+    @Column(name = "fecha_facturacion")
     private Date fechaFacturacion;
     @Column(name = "identificador ")
     private Long mpPaymentID;
-    @Column(name = "Id de pedido")
+    @Column(name = "Id_de_pedido")
     private Long mpMerchantOrderId;
-    @Column(name = "preferencia de pago")
+    @Column(name = "preferencia_de_pago")
     private String mpPreferentsId;
-    @Column(name = "tipo de pago")
+    @Column(name = "tipo_de_pago")
     private String mpPaymentType;
-    @Column(name = "total venta")
+    @Column(name = "total_venta")
     private double totalVenta;
+    @Column(name = "hora_Estimada_Entrega")
     private Date horaEstimidaEntrega;
-    @Column(name = "fecha Alta")
+    @Column(name = "fecha_Alta")
     private Date fechaAlta;
-    @Column(name = "fecha modificacion")
+    @Column(name = "fecha_modificacion")
     private Date fechaModificacion;
-    @Column(name = "fechaBaja")
+    @Column(name = "fecha_Baja")
     private Date fechaBaja;
 
     private FormaPago formaPago;
