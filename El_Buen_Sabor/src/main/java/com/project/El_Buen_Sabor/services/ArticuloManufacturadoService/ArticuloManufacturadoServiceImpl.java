@@ -48,12 +48,6 @@ public class ArticuloManufacturadoServiceImpl extends BaseServiceImpl<ArticuloMa
         }
     }
 
-        }catch (Exception e){
-            throw  new Exception(e.getMessage());
-
-        }
-    }
-
     @Override
     public List<ArticuloManufacturado> articuloManufacturado(String filtro) throws Exception {
         try {

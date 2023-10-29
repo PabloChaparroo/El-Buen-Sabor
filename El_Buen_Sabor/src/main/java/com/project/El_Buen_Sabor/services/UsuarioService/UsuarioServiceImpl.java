@@ -9,17 +9,16 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
 public class UsuarioServiceImpl extends BaseServiceImpl<Usuario, Long> implements UsuarioService {
-
     @Autowired
     private UsuarioRepository usuarioRepository;
     public UsuarioServiceImpl(BaseRepository<Usuario, Long> baseRepository) {
         super(baseRepository);
     }
-
 
     @Override
     public List<Usuario> search(String filtro) throws Exception {
@@ -37,9 +36,26 @@ public class UsuarioServiceImpl extends BaseServiceImpl<Usuario, Long> implement
 
             Page<Usuario> usuarios = usuarioRepository.search(filtro, pageable);
             return usuarios;
-        }catch (Exception e){
+        } catch (Exception e){
             throw  new Exception(e.getMessage());
+        }
+    }
 
+    @Override
+    public String registrarAdministrador(String nombre, String contrasena) throws Exception {
+        try{
+            Usuario u = new Usuario();
+            u.setNombreUsuario(nombre);
+            u.setContraseña(contrasena);
+            u.setFechaAlta(new Date());
+            u.setFechaBaja(null);
+            u.setFechaModificacion(null);
+            u.setRol(Usuario.Rol.ADMINISTRADOR);
+            usuarioRepository.save(u);
+            String m = new String("Ha sido registrado correctamente");
+            return m;
+        } catch(Exception e) {
+            throw  new Exception(e.getMessage());
         }
     }
 }

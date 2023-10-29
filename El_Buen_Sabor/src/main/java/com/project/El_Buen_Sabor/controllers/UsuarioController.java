@@ -28,4 +28,13 @@ public class UsuarioController extends BaseControllerImpl<Usuario, UsuarioServic
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
         }
     }
+
+    @PostMapping("/registrarAdministrador")
+    public ResponseEntity<?> registrarAdministrador(@RequestParam String nombre, @RequestParam String contrasena) {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.registrarAdministrador(nombre, contrasena));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error\":\"Error al actualizar, intente mas tarde.\"}");
+        }
+    }
 }
