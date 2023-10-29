@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f80c3f60-4723-4bb0-9a77-73649aed0fe3" name="Changes" comment="Hice lo de Base, BaseRepository y BaseService">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="f80c3f60-4723-4bb0-9a77-73649aed0fe3" name="Changes" comment="Hice el metodo para registrarAdministrador">
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +44,7 @@
         <entry key="$PROJECT_DIR$" value="rama_Saavedra_querys" />
       </map>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/El_Buen_Sabor" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -61,6 +61,9 @@
       </UrlAndAccount>
     </option>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -76,7 +79,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "rama__Saavedra__querys",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/Ariel/Desktop"
   }
@@ -111,7 +114,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696349760784</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Hice el metodo para registrarAdministrador">
+      <option name="closed" value="true" />
+      <created>1698549808440</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1698549808440</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -162,6 +173,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Hice lo de Base, BaseRepository y BaseService" />
-    <option name="LAST_COMMIT_MESSAGE" value="Hice lo de Base, BaseRepository y BaseService" />
+    <MESSAGE value="Hice el metodo para registrarAdministrador" />
+    <option name="LAST_COMMIT_MESSAGE" value="Hice el metodo para registrarAdministrador" />
   </component>
 </project>
