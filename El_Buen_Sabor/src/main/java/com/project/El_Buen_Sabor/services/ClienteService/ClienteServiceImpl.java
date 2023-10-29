@@ -33,7 +33,7 @@ public class ClienteServiceImpl extends BaseServiceImpl<Cliente, Long> implement
         try {
             List<Cliente> clientes = clienteRepository.search(filtro);
             return clientes;
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
     }
@@ -43,8 +43,8 @@ public class ClienteServiceImpl extends BaseServiceImpl<Cliente, Long> implement
         try {
             Page<Cliente> clientes = clienteRepository.searchPaged(filtro, pageable);
             return clientes;
-        }catch (Exception e){
-            throw  new Exception(e.getMessage());
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
 
         }
     }
@@ -66,6 +66,7 @@ public class ClienteServiceImpl extends BaseServiceImpl<Cliente, Long> implement
             throw new Exception(e.getMessage());
         }
     }
+}
 
 
 
