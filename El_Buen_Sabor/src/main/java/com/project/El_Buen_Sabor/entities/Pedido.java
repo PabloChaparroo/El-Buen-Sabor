@@ -74,4 +74,11 @@ public class Pedido extends Base {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_domicilio")
     private Domicilio domicilio;
+
+    //Relación con Cliente
+    @ManyToOne
+    @JoinColumn(name = "fk_cliente")
+    private Cliente cliente;
 }
+
+

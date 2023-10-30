@@ -46,9 +46,9 @@ public class ClienteServiceImpl extends BaseServiceImpl<Cliente, Long> implement
     }
 
     @Override
-    public List<Cliente> rankingCliente(Date fechaInicio, Date fechaFin) throws Exception {
+    public List<Object[]> rankingCliente(Date fechaInicio, Date fechaFin) throws Exception {
         try {
-            List<Cliente> clientes = clienteRepository.rankingCliente(fechaInicio, fechaFin);
+            List<Object[]> clientes = clienteRepository.rankingCliente(fechaInicio, fechaFin);
             return clientes;
         } catch (Exception e) {
             throw new Exception(e.getMessage());

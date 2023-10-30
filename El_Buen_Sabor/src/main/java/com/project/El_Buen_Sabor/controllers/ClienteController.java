@@ -38,7 +38,7 @@ public class  ClienteController extends BaseControllerImpl<Cliente, ClienteServi
     @GetMapping("/rankingCliente")
     public ResponseEntity<?> rankingCliente(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fechaInicio, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fechaFin) {
         try {
-            List<Cliente> clientes = servicio.rankingCliente(fechaInicio, fechaFin);
+            List<Object[]> clientes = servicio.rankingCliente(fechaInicio, fechaFin);
             return ResponseEntity.status(HttpStatus.OK).body(clientes);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\": \"" + e.getMessage() + "\"}");
