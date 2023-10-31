@@ -277,6 +277,7 @@ public class ElBuenSaborApplication {
 
 				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 						Date fechaAlta = sdf.parse("23/10/2023");
+						Date fechaPedido = sdf.parse("15/10/2023");
 
 						//Cliente 1: Pablo Chaparro
 						//Domicilio 1: Guaymallén San Jose
@@ -311,6 +312,7 @@ public class ElBuenSaborApplication {
 								cliente1.setUsuario(usuario1);
 
 									Pedido pedido1 = new Pedido();
+									pedido1.setFechapedido(fechaPedido);
 									pedido1.setHoraEstimidaEntrega("30min");
 									pedido1.setTotal(3000);
 									pedido1.setEstado(Pedido.EstadoPedido.COMPLETADO);
@@ -350,12 +352,14 @@ public class ElBuenSaborApplication {
 								cliente2.setUsuario(usuario2);
 
 								Pedido pedido2 = new Pedido();
+								pedido2.setFechapedido(fechaPedido);
 								pedido2.setHoraEstimidaEntrega("50min");
 								pedido2.setTotal(5000);
 								pedido2.setEstado(Pedido.EstadoPedido.COMPLETADO);
 								pedido2.setTipoEnvio(Pedido.TipoEnvio.TAKE_AWAY);
 
 								Pedido pedido3 = new Pedido();
+								pedido3.setFechapedido(fechaPedido);
 								pedido3.setHoraEstimidaEntrega("30min");
 								pedido3.setTotal(5000);
 								pedido3.setEstado(Pedido.EstadoPedido.PREPARACION);
@@ -475,6 +479,7 @@ public class ElBuenSaborApplication {
 
 									// Crear un nuevo pedido para el cliente
 									Pedido pedido4 = new Pedido();
+									pedido4.setFechapedido(fechaPedido);
 									pedido4.setHoraEstimidaEntrega("45min");
 									pedido4.setTotal(4500);
 									pedido4.setEstado(Pedido.EstadoPedido.PREPARACION);
@@ -568,6 +573,7 @@ public class ElBuenSaborApplication {
 
 				// Crear un nuevo pedido para el cliente
 				Pedido pedido5 = new Pedido();
+				pedido5.setFechapedido(fechaPedido);
 				pedido5.setHoraEstimidaEntrega("40min");
 				pedido5.setTotal(6000);
 				pedido5.setEstado(Pedido.EstadoPedido.PREPARACION);
@@ -665,6 +671,7 @@ public class ElBuenSaborApplication {
 
 				// Crear varios pedidos para el cliente
 				Pedido pedido6 = new Pedido();
+				pedido6.setFechapedido(fechaPedido);
 				pedido6.setHoraEstimidaEntrega("30min");
 				pedido6.setTotal(3000);
 				pedido6.setEstado(Pedido.EstadoPedido.CANCELADO);
@@ -685,6 +692,7 @@ public class ElBuenSaborApplication {
 
 // Crear otro pedido para hamburguesas
 				Pedido pedido7 = new Pedido();
+				pedido7.setFechapedido(fechaPedido);
 				pedido7.setHoraEstimidaEntrega("40min");
 				pedido7.setTotal(4000);
 				pedido7.setEstado(Pedido.EstadoPedido.PREPARACION);
@@ -726,6 +734,7 @@ public class ElBuenSaborApplication {
 
 // Crear otro pedido para pizzas
 				Pedido pedido8 = new Pedido();
+				pedido8.setFechapedido(fechaPedido);
 				pedido8.setHoraEstimidaEntrega("35min");
 				pedido8.setTotal(3500);
 				pedido8.setEstado(Pedido.EstadoPedido.PREPARACION);
