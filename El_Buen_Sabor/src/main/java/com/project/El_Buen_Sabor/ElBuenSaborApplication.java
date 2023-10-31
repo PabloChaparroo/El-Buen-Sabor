@@ -318,7 +318,7 @@ public class ElBuenSaborApplication {
 									pedido1.setEstado(Pedido.EstadoPedido.COMPLETADO);
 									pedido1.setTipoEnvio(Pedido.TipoEnvio.DELIVERY);
 
-									cliente1.getPedidos().add(pedido1);
+									cliente1.getPedido().add(pedido1);
 
 
 
@@ -365,8 +365,9 @@ public class ElBuenSaborApplication {
 								pedido3.setEstado(Pedido.EstadoPedido.PREPARACION);
 								pedido3.setTipoEnvio(Pedido.TipoEnvio.DELIVERY);
 
-								cliente2.getPedidos().add(pedido2);
-								cliente2.getPedidos().add(pedido3);
+
+								cliente2.getPedido().add(pedido2);
+								cliente2.getPedido().add(pedido3);
 
 
 									// Detalle de cuantas hamburguesas pidio
@@ -544,7 +545,7 @@ public class ElBuenSaborApplication {
 															pedido4.setFactura(factura3);
 
 															// Agregar el pedido al cliente
-															cliente3.getPedidos().add(pedido4);
+															cliente3.getPedido().add(pedido4);
 
 
 				Cliente cliente4 = new Cliente();
@@ -638,7 +639,7 @@ public class ElBuenSaborApplication {
 				pedido5.setFactura(factura4);
 
 				// Agregar el pedido al cliente
-				cliente4.getPedidos().add(pedido5);
+				cliente4.getPedido().add(pedido5);
 
 
 
@@ -775,9 +776,9 @@ public class ElBuenSaborApplication {
 				pedido8.getDetallePedidos().add(detallePedido26);
 
 // Agregar los pedidos al cliente
-				cliente5.getPedidos().add(pedido6);
-				cliente5.getPedidos().add(pedido7);
-				cliente5.getPedidos().add(pedido8);
+				cliente5.getPedido().add(pedido6);
+				cliente5.getPedido().add(pedido7);
+				cliente5.getPedido().add(pedido8);
 
 
 

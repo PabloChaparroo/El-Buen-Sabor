@@ -18,7 +18,7 @@ import java.util.List;
 @Getter
 @Setter
 
-@Table(name = "Cliente", schema = "public")          //Cómo se llama la tabla
+@Table(name = "Cliente")            //Cómo se llama la tabla
 public class Cliente extends Base {
 
     //Atributos
@@ -43,12 +43,15 @@ public class Cliente extends Base {
 
     private List<Domicilio> domicilios = new ArrayList<Domicilio>();
 
-    //Relación con Pedido
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    private List<Pedido> pedidos = new ArrayList<Pedido>();
+
+    //Relacion con pedido
+    @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true, fetch = FetchType.EAGER)
+    @JoinColumn(name = "fk_cliente")
+
+    private List<Pedido> pedido = new ArrayList<Pedido>();
 
     //Relacion con Usuario 1 a 1
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)        //orphanRemoval sirve para que si eliminamos un pedido tambien se eliminen los pedidosProducto asociados a ese pedido
     @JoinColumn(name = "fk_usuario")
     private Usuario usuario;
 

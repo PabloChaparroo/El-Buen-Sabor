@@ -22,7 +22,7 @@ public interface ClienteRepository extends BaseRepository<Cliente, Long> {
 
     @Query("SELECT c.nombre AS cliente_nombre, COUNT(p.id) AS cantidad_pedidos " +
             "FROM Cliente c " +
-            "JOIN c.pedidos p " +
+            "JOIN c.pedido p " +
             "WHERE p.fechapedido BETWEEN :fechaInicio AND :fechaFin " +
             "GROUP BY c.nombre " +
             "ORDER BY cantidad_pedidos DESC")
