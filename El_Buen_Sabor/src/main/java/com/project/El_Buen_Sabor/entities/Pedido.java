@@ -54,8 +54,10 @@ public class Pedido extends Base {
         TAKE_AWAY
     }
 
-
-
+    //Relación con Cliente
+    @ManyToOne
+    @JoinColumn(name = "fk_cliente")
+    private Cliente cliente;
 
     //Relacion con Factura (puntero) 1 a 0..1
     @OneToOne(cascade = CascadeType.ALL)        //cascada se persiste tanto factura como pedido(puede ser cero)
@@ -75,10 +77,8 @@ public class Pedido extends Base {
     @JoinColumn(name = "fk_domicilio")
     private Domicilio domicilio;
 
-    //Relación con Cliente
-    @ManyToOne
-    @JoinColumn(name = "fk_cliente")
-    private Cliente cliente;
+
+
 }
 
 
