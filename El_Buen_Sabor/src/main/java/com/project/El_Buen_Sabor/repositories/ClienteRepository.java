@@ -20,7 +20,7 @@ public interface ClienteRepository extends BaseRepository<Cliente, Long> {
     @Query(value = "SELECT c FROM Cliente c WHERE c.nombre LIKE '%1%' OR c.apellido LIKE '%1%'")
     Page<Cliente> search(String filtro, Pageable pageable);
 
-    @Query("SELECT c.nombre AS cliente_nombre, COUNT(p.id) AS cantidad_pedidos " +
+    @Query(value = "SELECT c.nombre AS cliente_nombre, COUNT(p.id) AS cantidad_pedidos " +
             "FROM Cliente c " +
             "JOIN c.pedido p " +
             "WHERE p.fechapedido BETWEEN :fechaInicio AND :fechaFin " +
