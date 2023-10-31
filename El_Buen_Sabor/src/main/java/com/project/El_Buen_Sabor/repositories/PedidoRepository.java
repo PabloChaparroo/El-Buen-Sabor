@@ -19,14 +19,4 @@ public interface PedidoRepository extends BaseRepository<Pedido, Long> {
 
     @Query(value= "SELECT p FROM Pedido p WHERE p.id like '%1%'")
     Page<Pedido> search(String filtro, Pageable pageable);
-
-    @Query("SELECT am.id AS articulo_manufacturado_id, am.denominacion AS articulo_manufacturado_denominacion, " +
-            "       COUNT(dp.id) AS cantidad_pedidos" +
-            " FROM Pedido p" +
-            " JOIN DetallePedido dp ON p.id = dp.id " +
-            " JOIN ArticuloManufacturado am ON dp.id = am.id" +
-            " WHERE p.fechapedido BETWEEN :fechaInicio AND :fechaFin" +
-            " GROUP BY am.id, am.denominacion" +
-            " ORDER BY cantidad_pedidos DESC")
-    List<Object[]> rankingArticulo(@Param("fechaInicio") Date fechaInicio, @Param("fechaFin") Date fechaFin);
 }

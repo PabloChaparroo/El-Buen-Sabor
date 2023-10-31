@@ -45,13 +45,5 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido, Long> implements 
         }
     }
 
-    @Override
-    public List<Object[]> rankingArticulo(Date fechaInicio, Date fechaFin) throws Exception {
-        try {
-            List<Object[]> pedidos = pedidoRepository.rankingArticulo(fechaInicio, fechaFin);
-            return pedidos;
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
-        }
-    }
+
 }
