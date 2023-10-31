@@ -66,7 +66,7 @@ public class Pedido extends Base {
 
 
     //Relacion con DetallePedido
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "fk_pedido")
 
     private List<DetallePedido> detallePedidos = new ArrayList<DetallePedido>();

@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -41,6 +42,16 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido, Long> implements 
         }catch (Exception e){
             throw  new Exception(e.getMessage());
 
+        }
+    }
+
+    @Override
+    public List<Object[]> rankingArticulo(Date fechaInicio, Date fechaFin) throws Exception {
+        try {
+            List<Object[]> pedidos = pedidoRepository.rankingArticulo(fechaInicio, fechaFin);
+            return pedidos;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
         }
     }
 }

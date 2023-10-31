@@ -15,10 +15,10 @@ import java.util.List;
 @Repository
 public interface FacturaRepository extends BaseRepository<Factura, Long> {
 
-    @Query(value= "SELECT f FROM Factura f WHERE f.numero like '%filtro%' ")
+    @Query(value= "SELECT f FROM Factura f WHERE f.numero like '%1%' ")
     List<Factura> search(String filtro);
 
-    @Query(value= "SELECT f FROM Factura f WHERE f.numero like '%filtro%' ")
+    @Query(value= "SELECT f FROM Factura f WHERE f.numero like '%1%' ")
     Page<Factura> search(String filtro, Pageable pageable);
 
     @Query(

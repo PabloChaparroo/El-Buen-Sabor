@@ -21,7 +21,7 @@ public class UnidadMedida extends Base {
     @Column(name = "denominacion")
     private String denominacion;
     @Column(name = "abreviatura")
-    private String abreviattura;
+    private String abreviatura;
     @Column(name = "fecha Alta")
     private Date fechaAlta;
     @Column(name = "fecha modificacion")

@@ -12,8 +12,8 @@ import java.util.List;
 @Repository
 public interface DetalleFacturaRepository extends BaseRepository<DetalleFactura, Long>{
 
-    @Query(value= "SELECT df FROM DetalleFactura df WHERE df.id like '%filtro%'")
+    @Query(value= "SELECT df FROM DetalleFactura df WHERE df.id like '%1%'")
     List<DetalleFactura> search(String filtro);
-    @Query(value= "SELECT df FROM DetalleFactura df WHERE df.id like '%filtro%'")
+    @Query(value= "SELECT df FROM DetalleFactura df WHERE df.id like '%1%'")
     Page<DetalleFactura> search(String filtro, Pageable pageable);
 }

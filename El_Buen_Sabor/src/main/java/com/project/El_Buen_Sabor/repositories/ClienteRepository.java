@@ -23,7 +23,7 @@ public interface ClienteRepository extends BaseRepository<Cliente, Long> {
     @Query("SELECT c.nombre AS cliente_nombre, COUNT(p.id) AS cantidad_pedidos " +
             "FROM Cliente c " +
             "JOIN c.pedidos p " +
-            "WHERE p.fechaPedido BETWEEN :fechaInicio AND :fechaFin " +
+            "WHERE p.fechapedido BETWEEN :fechaInicio AND :fechaFin " +
             "GROUP BY c.nombre " +
             "ORDER BY cantidad_pedidos DESC")
     List<Object[]> rankingCliente(@Param("fechaInicio") Date fechaInicio, @Param("fechaFin") Date fechaFin);
@@ -34,7 +34,7 @@ public interface ClienteRepository extends BaseRepository<Cliente, Long> {
             value = "SELECT c.nombre AS cliente_nombre " +
                     "FROM Cliente c " +
                     "JOIN c.pedido p " +
-                    "WHERE p.fechaPedido BETWEEN :fechaInicio AND :fechaFin " +
+                    "WHERE p.fechapedido BETWEEN :fechaInicio AND :fechaFin " +
                     "ORDER BY p.fechaPedido DESC",
             nativeQuery = true
     )

@@ -12,10 +12,10 @@ import java.util.List;
 @Repository
 public interface UnidadMedidaRepository extends BaseRepository<UnidadMedida, Long> {
 
-    @Query(value= "SELECT um FROM UnidadMedida um WHERE um.abreviatura like '%filtro%' or um.id like '%filtro%'")
+    @Query(value= "SELECT um FROM UnidadMedida um WHERE um.abreviatura like '%1%' or um.id like '%1%'")
     List<UnidadMedida> search(String filtro);
 
-    @Query(value= "SELECT um FROM UnidadMedida um WHERE um.abreviatura like '%filtro%' or um.id like '%filtro%'")
+    @Query(value= "SELECT um FROM UnidadMedida um WHERE um.abreviatura like '%1%' or um.id like '%1%'")
 
     Page<UnidadMedida> search(String filtro, Pageable pageable);
 }

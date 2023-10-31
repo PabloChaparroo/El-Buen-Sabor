@@ -47,8 +47,6 @@ public class Cliente extends Base {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Pedido> pedidos = new ArrayList<Pedido>();
 
-    private List<Pedido> pedido = new ArrayList<Pedido>();
-
     //Relacion con Usuario 1 a 1
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_usuario")
