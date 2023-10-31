@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -22,8 +23,13 @@ public interface ArticuloManufacturadoRepository extends BaseRepository<Articulo
     Page<ArticuloManufacturado> search(String filtro, Pageable pageable);
 
     @Query(
-            value= "SELECT am FROM ArticuloManufacturado am JOIN DetallePedido dp ON am.id=dp.id JOIN Pedido p ON dp.id=p.id WHERE p.fechaPedido BETWEEN '2023-01-01' AND '2023-10-01' ORDER BY dp.cantidad DESC",
-            nativeQuery = true)
-    List<ArticuloManufacturado> articuloManufacturado(@Param("filtro")String filtro);
-
+                    "SELECT am.denominacion AS nombre_artículo, COUNT(dp.id) AS cantidad_pedidos " +
+                    "FROM ArticuloManufacturado am " +
+                    "JOIN DetallePedido dp ON am.id = dp.id " +
+                    "JOIN Pedido p ON dp.id = p.id " +
+                    "WHERE p.fechapedido BETWEEN :fechaInicio AND :fechaFin " +
+                    "GROUP BY am.denominacion " +
+                    "ORDER BY cantidad_pedidos DESC"
+            )
+    List<Object[]> RankingArticuloManufacturado(@Param("fechaInicio") Date fechaInicio, @Param("fechaFin") Date fechaFin);
 }

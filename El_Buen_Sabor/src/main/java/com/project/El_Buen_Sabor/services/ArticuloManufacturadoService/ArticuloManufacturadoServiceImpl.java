@@ -12,7 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 
-
+import java.util.Date;
 import java.util.List;
 
 
@@ -48,17 +48,17 @@ public class ArticuloManufacturadoServiceImpl extends BaseServiceImpl<ArticuloMa
         }
     }
 
-
     @Override
-    public List<ArticuloManufacturado> articuloManufacturado(String filtro) throws Exception {
+    public List<Object[]> RankingArticuloManufacturado(Date fechaInicio, Date fechaFin) throws Exception {
         try {
-            List<ArticuloManufacturado> articuloManufacturados = articuloManufacturadoRepository.search(filtro);
+            List<Object[]> articuloManufacturados = articuloManufacturadoRepository.RankingArticuloManufacturado(fechaInicio, fechaFin);
             return articuloManufacturados;
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
     }
 }
+
 
 
 
