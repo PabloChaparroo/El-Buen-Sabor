@@ -44,7 +44,7 @@ public class Cliente extends Base {
     private List<Domicilio> domicilios = new ArrayList<Domicilio>();
 
     //Relación con Pedido
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER, mappedBy = "cliente")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Pedido> pedidos = new ArrayList<Pedido>();
 
 
