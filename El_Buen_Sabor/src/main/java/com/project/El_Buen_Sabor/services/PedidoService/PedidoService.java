@@ -11,5 +11,5 @@ import java.util.List;
 public interface PedidoService extends BaseService<Pedido, Long> {
     List<Pedido> search(String filtro) throws Exception;
     Page<Pedido> search(String filtro, Pageable pageable) throws Exception;
-    List<Object[]> rankingArticulo(Date fechaInicio, Date fechaFin) throws Exception;
+
 }

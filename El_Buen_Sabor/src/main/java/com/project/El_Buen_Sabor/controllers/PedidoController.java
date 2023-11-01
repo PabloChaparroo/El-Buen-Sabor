@@ -34,13 +34,4 @@ public class PedidoController extends BaseControllerImpl<Pedido, PedidoServiceIm
         }
     }
 
-    @GetMapping("/rankingArticulo")
-    public ResponseEntity<?> rankingArticulo(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fechaInicio, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fechaFin) {
-        try {
-            List<Object[]> pedidos = servicio.rankingArticulo(fechaInicio, fechaFin);
-            return ResponseEntity.status(HttpStatus.OK).body(pedidos);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\": \"" + e.getMessage() + "\"}");
-        }
-    }
 }
