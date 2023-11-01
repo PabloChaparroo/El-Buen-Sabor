@@ -12,5 +12,5 @@ public interface ClienteService extends BaseService<Cliente, Long> {
     List<Cliente> search(String filtro) throws Exception;
     Page<Cliente> search(String filtro, Pageable pageable) throws Exception;
     List<Object[]> rankingCliente(Date fechaInicio, Date fechaFin) throws Exception;
-    List<Cliente> pedidosPorFecha(Date fechaInicio,Date fechaFin) throws Exception;
+    List<Object[]> pedidosPorFecha(Date fechaInicio,Date fechaFin) throws Exception;
 }
