@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -41,4 +42,23 @@ public class UsuarioServiceImpl extends BaseServiceImpl<Usuario, Long> implement
 
         }
     }
+
+    @Override
+    public String registrarAdministrador(String nombre, String contrasena) throws Exception {
+        try{
+            Usuario u = new Usuario();
+            u.setNombreUsuario(nombre);
+            u.setContraseña(contrasena);
+            u.setFechaAlta(new Date());
+            u.setFechaBaja(null);
+            u.setFechaModificacion(null);
+            u.setRol(Usuario.Rol.ADMINISTRADOR);
+            usuarioRepository.save(u);
+            String m = new String("Ha sido registrado correctamente");
+            return m;
+        } catch(Exception e) {
+            throw  new Exception(e.getMessage());
+        }
+    }
+
 }

@@ -22,6 +22,8 @@ public interface ArticuloManufacturadoRepository extends BaseRepository<Articulo
     @Query(value= "SELECT * FROM Artículo_Manufacturado am WHERE am.denominacion LIKE '%1%'", nativeQuery = true)
     Page<ArticuloManufacturado> search(String filtro, Pageable pageable);
 
+
+    //
     @Query(
                     "SELECT am.denominacion AS nombre_artículo, COUNT(dp.id) AS cantidad_pedidos " +
                     "FROM ArticuloManufacturado am " +

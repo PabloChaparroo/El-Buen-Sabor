@@ -37,8 +37,8 @@ public class ArticuloManufacturadoController extends  BaseControllerImpl<Articul
     @GetMapping("/rankingArticulos")
     public ResponseEntity<?> RankingArticuloManufacturado(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fechaInicio, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fechaFin) {
         try {
-            List<Object[]> clientes = servicio.RankingArticuloManufacturado(fechaInicio, fechaFin);
-            return ResponseEntity.status(HttpStatus.OK).body(clientes);
+            List<Object[]> articulo = servicio.RankingArticuloManufacturado(fechaInicio, fechaFin);
+            return ResponseEntity.status(HttpStatus.OK).body(articulo);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\": \"" + e.getMessage() + "\"}");
         }

@@ -12,8 +12,8 @@ import java.util.List;
 public interface ArticuloManufacturadoService extends BaseService<ArticuloManufacturado, Long> {
 
 
-    List<ArticuloManufacturado> buscarPorFiltro(String filtro);    Page<ArticuloManufacturado> search(String filtro, Pageable pageable) throws Exception;
-
+    List<ArticuloManufacturado> buscarPorFiltro(String filtro);
+    Page<ArticuloManufacturado> search(String filtro, Pageable pageable) throws Exception;
     List<Object[]> RankingArticuloManufacturado(Date fechaInicio, Date fechaFin) throws Exception;
 
 }

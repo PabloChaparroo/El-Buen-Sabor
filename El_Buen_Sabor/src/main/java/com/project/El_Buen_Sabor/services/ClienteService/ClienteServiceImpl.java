@@ -17,9 +17,9 @@ public class ClienteServiceImpl extends BaseServiceImpl<Cliente, Long> implement
     @Autowired
     private ClienteRepository clienteRepository;
 
-    public ClienteServiceImpl(BaseRepository<Cliente, Long> baseRepository, ClienteRepository clienteRepository) {
+    public ClienteServiceImpl(BaseRepository<Cliente, Long> baseRepository) {
         super(baseRepository);
-        this.clienteRepository = clienteRepository;
+
     }
 
 
