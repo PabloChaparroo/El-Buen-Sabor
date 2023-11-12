@@ -19,7 +19,7 @@ public class RubroArticuloServiceImpl extends BaseServiceImpl<RubroArticulo, Lon
 
     public RubroArticuloServiceImpl(BaseRepository<RubroArticulo, Long> baseRepository, RubroArticuloRepository rubroArticuloRepository) {
         super(baseRepository);
-        this.rubroArticuloRepository = rubroArticuloRepository;
+
     }
 
 

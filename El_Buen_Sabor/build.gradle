@@ -29,7 +29,12 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'com.h2database:h2'
 	annotationProcessor 'org.projectlombok:lombok'
+	// https://mvnrepository.com/artifact/com.auth0/java-jwt
+	implementation 'org.springframework.boot:spring-boot-starter-security:3.1.5'
 
+	implementation 'io.jsonwebtoken:jjwt-api:0.12.3'
+
+	implementation group: 'com.auth0', name: 'java-jwt', version: '2.0.1'
 	//TEST
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'com.tngtech.archunit:archunit-junit5:1.1.0'
