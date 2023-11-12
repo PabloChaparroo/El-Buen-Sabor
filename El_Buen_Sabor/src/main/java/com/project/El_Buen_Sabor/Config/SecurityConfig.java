@@ -34,9 +34,10 @@ public class SecurityConfig {
                         authRequest
                                 .requestMatchers("/auth/**").permitAll()
                                 .requestMatchers(PathRequest.toH2Console()).permitAll()
-                                .requestMatchers("/api/v1/demoAdmin/**").hasAuthority("ADMINISTRADOR")
-                                .requestMatchers("/api/v1/demoUser/**").hasAuthority("CLIENTE")
-
+                                .requestMatchers("/api/v1/Admin/**").hasAuthority("ADMINISTRADOR")
+                                .requestMatchers("/api/v1/Cliente/**").hasAuthority("CLIENTE")
+                                .requestMatchers("/api/v1/Delibery/**").hasAuthority("DELYVERY")
+                                .requestMatchers("/api/v1/Cocinero/**").hasAuthority("COCINERO")
                 )
                 .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
                 .sessionManagement(sessionManager->

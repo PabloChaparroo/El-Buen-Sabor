@@ -41,7 +41,7 @@ public class AppricationConfig {
 
     @Bean
     public UserDetailsService userDetailService(){
-        return username -> usuarioRepository.search(username)
+        return username -> usuarioRepository.findByUsername(username)
                 .orElseThrow(()-> new UsernameNotFoundException("User not fournd"));
     }
 }

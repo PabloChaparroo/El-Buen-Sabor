@@ -14,6 +14,8 @@ import com.project.El_Buen_Sabor.entities.Usuario.Rol;
 import com.project.El_Buen_Sabor.entities.Usuario;
 import com.project.El_Buen_Sabor.repositories.UsuarioRepository;
 
+import java.util.Set;
+
 @Service
 @RequiredArgsConstructor
 public class AuthService {
@@ -24,7 +26,7 @@ public class AuthService {
 
     public AuthResponse login(LoginRequest request){
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
-        UserDetails user= usuarioRepository.search(request.getUsername()).orElseThrow();
+        UserDetails user= usuarioRepository.findByUsername(request.getUsername()).orElseThrow();
         String token=jwtService.getToken(user);
         return AuthResponse.builder()
                 .token(token)
@@ -32,10 +34,10 @@ public class AuthService {
     }
 
     public AuthResponse register(RegisterRequest request){
-        User user = User.builder()
-                .username(request.getUsername())
-                .password(passwordEncoder.encode(request.getPassword()))
-                .roles(Rol.CLIENTE)
+        Usuario user = Usuario.builder()
+                .nombreUsuario(request.getUsername())
+                .contraseña(passwordEncoder.encode(request.getPassword()))
+                .rol(Rol.CLIENTE)
                 .build();
 
         usuarioRepository.save(user);

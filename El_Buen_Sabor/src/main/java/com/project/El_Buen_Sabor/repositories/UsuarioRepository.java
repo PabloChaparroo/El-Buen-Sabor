@@ -5,12 +5,14 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface UsuarioRepository extends BaseRepository<Usuario, Long> {
-
+    Optional<Usuario> findByUsername(String username);
     @Query(value= "SELECT u FROM Usuario u WHERE u.nombreUsuario like '%1%' or u.rol like '%1%'")
     List<Usuario> search(String filtro);
 

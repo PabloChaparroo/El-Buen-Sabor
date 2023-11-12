@@ -32,9 +32,10 @@ dependencies {
 	// https://mvnrepository.com/artifact/com.auth0/java-jwt
 	implementation 'org.springframework.boot:spring-boot-starter-security:3.1.5'
 
-	implementation 'io.jsonwebtoken:jjwt-api:0.12.3'
-
-	implementation group: 'com.auth0', name: 'java-jwt', version: '2.0.1'
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+	implementation 'io.jsonwebtoken:jjwt-impl:0.11.5'
+	implementation 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+	implementation 'com.auth0:java-jwt:4.4.0'
 	//TEST
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'com.tngtech.archunit:archunit-junit5:1.1.0'
