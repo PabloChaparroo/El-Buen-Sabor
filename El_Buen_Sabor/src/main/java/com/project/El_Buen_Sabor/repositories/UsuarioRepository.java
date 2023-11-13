@@ -12,7 +12,8 @@ import java.util.Optional;
 
 @Repository
 public interface UsuarioRepository extends BaseRepository<Usuario, Long> {
-    Optional<Usuario> findByUsername(String username);
+    Optional<Usuario> findByNombreUsuario(String username);
+
     @Query(value= "SELECT u FROM Usuario u WHERE u.nombreUsuario like '%1%' or u.rol like '%1%'")
     List<Usuario> search(String filtro);
 

@@ -3,7 +3,6 @@ package com.project.El_Buen_Sabor.Config;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -27,19 +26,17 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception
     {
         return http
-                .csrf(csrf->
-                        csrf
-                                .disable())
-                .authorizeRequests(authRequest ->
+                .csrf(csrf -> csrf.disable())
+                        .authorizeHttpRequests(authRequest ->
                         authRequest
                                 .requestMatchers("/auth/**").permitAll()
                                 .requestMatchers(PathRequest.toH2Console()).permitAll()
                                 .requestMatchers("/api/v1/Admin/**").hasAuthority("ADMINISTRADOR")
                                 .requestMatchers("/api/v1/Cliente/**").hasAuthority("CLIENTE")
-                                .requestMatchers("/api/v1/Delibery/**").hasAuthority("DELYVERY")
-                                .requestMatchers("/api/v1/Cocinero/**").hasAuthority("COCINERO")
+                              //  .requestMatchers("/api/v1/Delibery/**").hasAuthority("DELIBERY")
+                               // .requestMatchers("/api/v1/Cocinero/**").hasAuthority("COCINERO")
                 )
-                .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
+                .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable)) //H2
                 .sessionManagement(sessionManager->
                         sessionManager
                                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS))

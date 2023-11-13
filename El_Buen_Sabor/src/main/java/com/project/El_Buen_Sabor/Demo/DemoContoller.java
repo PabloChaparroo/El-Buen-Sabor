@@ -10,23 +10,21 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/api/v1")
 @RequiredArgsConstructor
 public class DemoContoller {
-    @PostMapping (value = "Cliente")
+    @PostMapping (value = "/Cliente")
     public String welcome(){
         return "Bienvenido from secure endpoint";
     }
 
-    @PostMapping (value = "Admin")
+    @PostMapping (value = "/Admin")
     public String welcomeAdmin(){
         return "Bienvenido from secure endpoint ADMIN";
     }
 
-    @PostMapping (value = "Delibery")
-    public String welcomeDelibery(){
-        return "Bienvenido from secure endpoint";
-    }
-
-    @PostMapping (value = "Cocinero")
-    public String welcomeCocinero(){
-        return "Bienvenido from secure endpoint";
-    }
+//    @PostMapping (value = "Delibery")
+//    public String welcomeDelibery(){return "Bienvenido from secure Delibery";}
+//
+//    @PostMapping (value = "Cocinero")
+//    public String welcomeCocinero(){
+//        return "Bienvenido from secure Cocinero";
+//    }
 }
