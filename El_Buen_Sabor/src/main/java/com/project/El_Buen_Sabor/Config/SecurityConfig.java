@@ -13,6 +13,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import com.project.El_Buen_Sabor.Jwt.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -29,12 +30,16 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                         .authorizeHttpRequests(authRequest ->
                         authRequest
-                                .requestMatchers("/auth/**").permitAll()
-                                .requestMatchers(PathRequest.toH2Console()).permitAll()
-                                .requestMatchers("/api/v1/Admin/**").hasAuthority("ADMINISTRADOR")
-                                .requestMatchers("/api/v1/Cliente/**").hasAuthority("CLIENTE")
-                              //  .requestMatchers("/api/v1/Delibery/**").hasAuthority("DELIBERY")
-                               // .requestMatchers("/api/v1/Cocinero/**").hasAuthority("COCINERO")
+                                .requestMatchers(new AntPathRequestMatcher("/auth/**")).permitAll()
+
+                                        //Consola H2:
+                                        .requestMatchers(PathRequest.toH2Console()).permitAll()
+
+                                        //Autorizacion de acceso a la url:
+                                        .requestMatchers(new AntPathRequestMatcher("/api/v1/Admin/**")).hasAuthority("ADMINISTRADOR")
+                                        .requestMatchers(new AntPathRequestMatcher("/api/v1/Cliente/**")).hasAuthority("CLIENTE")
+                                .requestMatchers(new AntPathRequestMatcher("/api/v1/Delibery/**")).hasAuthority("DELIBERY")
+                               .requestMatchers(new AntPathRequestMatcher("/api/v1/Cocinero/**")).hasAuthority("COCINERO")
                 )
                 .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable)) //H2
                 .sessionManagement(sessionManager->
