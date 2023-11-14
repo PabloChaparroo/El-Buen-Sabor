@@ -46,6 +46,16 @@ public class ArticuloInsumoServiceImpl extends BaseServiceImpl<ArticuloInsumo, L
         }
     }
 
+    @Override
+    public Page<ArticuloInsumo> getStockBajo(Pageable pageable) throws Exception{
+        try{
+            Page<ArticuloInsumo> insumo=articuloInsumoRepository.getStockBajo(pageable);
+            return insumo;
+        }catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
+    }
+
     }
 
 

@@ -3,6 +3,7 @@ package com.project.El_Buen_Sabor.services.ArticuloManufacturadoService;
 import com.project.El_Buen_Sabor.entities.ArticuloInsumo;
 import com.project.El_Buen_Sabor.entities.ArticuloManufacturado;
 import com.project.El_Buen_Sabor.entities.DetalleArticuloManufacturado;
+import com.project.El_Buen_Sabor.entities.Usuario;
 import com.project.El_Buen_Sabor.repositories.ArticuloManufacturadoRepository;
 import com.project.El_Buen_Sabor.repositories.BaseRepository;
 import com.project.El_Buen_Sabor.services.BaseService.BaseServiceImpl;
@@ -12,7 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 
-
+import java.util.Date;
 import java.util.List;
 
 
@@ -57,6 +58,10 @@ public class ArticuloManufacturadoServiceImpl extends BaseServiceImpl<ArticuloMa
             throw new Exception(e.getMessage());
         }
     }
+
+
+
+
 }
 
 

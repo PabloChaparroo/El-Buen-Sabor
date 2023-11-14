@@ -15,11 +15,15 @@ import java.util.List;
 public interface ArticuloInsumoRepository extends BaseRepository<ArticuloInsumo,Long> {
 
 
-    @Query(value= "SELECT ai FROM ArticuloInsumo ai WHERE ai.denominacion LIKE '%1%'")
+    @Query(value= "SELECT ai FROM ArticuloInsumo ai WHERE ai.denominacion LIKE %:filtro%")
     List<ArticuloInsumo> search(String filtro);
-    @Query(value= "SELECT ai FROM ArticuloInsumo ai WHERE  ai.denominacion LIKE '%1%'")
-    Page<ArticuloInsumo> search(String filtro, Pageable pageable);
-  
+    @Query(value= "SELECT ai FROM ArticuloInsumo ai WHERE  ai.denominacion LIKE %:filtro%")
+    Page<ArticuloInsumo> search(@Param("filtro") String filtro, Pageable pageable);
 
+    @Query(
+            value = "SELECT i FROM articulo_insumo i WHERE stockActual <= stockMinimo * 1.20",
+            countQuery = "SELECT count(*) FROM articuloInsumo",
+            nativeQuery = true)
+    Page<ArticuloInsumo> getStockBajo(Pageable pageable);
   
 }
