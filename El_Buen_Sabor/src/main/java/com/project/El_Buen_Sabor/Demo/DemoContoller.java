@@ -1,12 +1,10 @@
 package com.project.El_Buen_Sabor.Demo;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import lombok.RequiredArgsConstructor;
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/v1")
 @RequiredArgsConstructor
 public class DemoContoller {
