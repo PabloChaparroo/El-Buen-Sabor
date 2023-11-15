@@ -7,10 +7,12 @@ import com.project.El_Buen_Sabor.services.ArticuloManufacturadoService.ArticuloM
 import com.project.El_Buen_Sabor.services.ClienteService.ClienteServiceImpl;
 import com.project.El_Buen_Sabor.services.DetalleArticuloManufacturadoService.DetalleArticuloManufacturadoServiceImpl;
 import jakarta.annotation.PostConstruct;
+import lombok.RequiredArgsConstructor;
 import org.aspectj.lang.annotation.Around;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -19,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 @SpringBootApplication
+@RequiredArgsConstructor
 public class ElBuenSaborApplication {
 
 	@Autowired
@@ -37,6 +40,7 @@ public class ElBuenSaborApplication {
 	@Autowired
 	private DetallePedidoRepository detallePedidoRepository;
 
+	private final PasswordEncoder passwordEncoder;
 	public static void main(String[] args) {
 		SpringApplication.run(ElBuenSaborApplication.class, args);
 		System.out.println("--------------------ESTÁ FUNCIONANDO CORRECTAMENTE------------------------");
@@ -306,7 +310,7 @@ public class ElBuenSaborApplication {
 
 								Usuario usuario1 = new Usuario();
 								usuario1.setNombreUsuario("Pabloo11");
-								usuario1.setContraseña("1234");
+								usuario1.setContraseña(passwordEncoder.encode("1234"));
 								usuario1.setRol(Usuario.Rol.COCINERO);
 								usuario1.setFechaAlta(fechaAlta);
 								cliente1.setUsuario(usuario1);
@@ -345,7 +349,7 @@ public class ElBuenSaborApplication {
 
 								Usuario usuario2 = new Usuario();
 								usuario2.setNombreUsuario("Francisco22");
-								usuario2.setContraseña("5678");
+								usuario2.setContraseña(passwordEncoder.encode("4567"));
 								usuario2.setRol(Usuario.Rol.CLIENTE);
 								usuario2.setFechaAlta(fechaAlta);
 
@@ -472,7 +476,7 @@ public class ElBuenSaborApplication {
 
 								Usuario usuario3 = new Usuario();
 								usuario3.setNombreUsuario("Berna77");
-								usuario3.setContraseña("7896423");
+								usuario3.setContraseña(passwordEncoder.encode("76128"));
 								usuario3.setRol(Usuario.Rol.DELYVERY);
 								usuario3.setFechaAlta(fechaAlta);
 
@@ -566,7 +570,7 @@ public class ElBuenSaborApplication {
 				// Crear un nuevo usuario para el cliente
 				Usuario usuario4 = new Usuario();
 				usuario4.setNombreUsuario("Valen9");
-				usuario4.setContraseña("1234");
+				usuario4.setContraseña(passwordEncoder.encode("1234"));
 				usuario4.setRol(Usuario.Rol.CLIENTE);
 				usuario4.setFechaAlta(fechaAlta);
 
@@ -664,7 +668,7 @@ public class ElBuenSaborApplication {
 				// Crear un nuevo usuario para el cliente
 				Usuario usuario5 = new Usuario();
 				usuario5.setNombreUsuario("Ivanii");
-				usuario5.setContraseña("5678");
+				usuario5.setContraseña(passwordEncoder.encode("5678"));
 				usuario5.setRol(Usuario.Rol.CLIENTE);
 				usuario5.setFechaAlta(fechaAlta);
 
