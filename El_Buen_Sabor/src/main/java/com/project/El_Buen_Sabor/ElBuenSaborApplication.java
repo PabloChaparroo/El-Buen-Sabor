@@ -13,10 +13,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @SpringBootApplication
 public class ElBuenSaborApplication {
@@ -37,12 +34,17 @@ public class ElBuenSaborApplication {
 	@Autowired
 	private DetallePedidoRepository detallePedidoRepository;
 
+	@Autowired
+	private UnidadMedidaRepository unidadMedidaRepository;
+
 	public static void main(String[] args) {
 		SpringApplication.run(ElBuenSaborApplication.class, args);
 		System.out.println("--------------------ESTÁ FUNCIONANDO CORRECTAMENTE------------------------");
 	}
 
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+
 	SimpleDateFormat horaFormat = new SimpleDateFormat("HH:mm:ss");
 		@PostConstruct
 		public void init () {
@@ -771,6 +773,44 @@ public class ElBuenSaborApplication {
 				cliente5.getPedido().add(pedido8);
 
 
+
+				Date fechaAlta2 = sdf.parse("12/01/2023");
+				Date fechaAlta3 = sdf.parse("09/12/2023");
+
+				Date fechaBaja = sdf.parse("20/12/2023");
+				Date fechaBaja2 = sdf.parse("11/04/2023");
+				Date fechaBaja3 = sdf.parse("02/07/2023");
+
+				Date fechaModificacion = sdf.parse("29/07/2023");
+				Date fechaModificacion2 = sdf.parse("03/02/2023");
+				Date fechaModificacion3 = sdf.parse("07/09/2023");
+
+				//Agregar Unidad de medida
+				 UnidadMedida unidadMedida1 = new UnidadMedida();
+				 unidadMedida1.setDenominacion("cm");
+				 unidadMedida1.setAbreviatura("centimetro");
+				 unidadMedida1.setFechaAlta(fechaAlta);
+				 unidadMedida1.setFechaBaja(fechaBaja);
+				unidadMedida1.setFechaModificacion(fechaModificacion);
+
+				UnidadMedida unidadMedida2 = new UnidadMedida();
+				unidadMedida2.setDenominacion("kg");
+				unidadMedida2.setAbreviatura("kilogramo");
+				unidadMedida2.setFechaAlta(fechaAlta2);
+				unidadMedida2.setFechaBaja(fechaBaja2);
+				unidadMedida2.setFechaModificacion(fechaModificacion2);
+
+				UnidadMedida unidadMedida3 = new UnidadMedida();
+				unidadMedida3.setDenominacion("L");
+				unidadMedida3.setAbreviatura("litro");
+				unidadMedida3.setFechaAlta(fechaAlta3);
+				unidadMedida3.setFechaBaja(fechaBaja3);
+				unidadMedida3.setFechaModificacion(fechaModificacion3);
+
+
+				unidadMedidaRepository.save(unidadMedida1);
+				unidadMedidaRepository.save(unidadMedida2);
+				unidadMedidaRepository.save(unidadMedida3);
 
 
 				clienteRepository.save(cliente1);
