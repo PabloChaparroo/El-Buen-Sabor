@@ -477,7 +477,7 @@ public class ElBuenSaborApplication {
 								Usuario usuario3 = new Usuario();
 								usuario3.setNombreUsuario("Berna77");
 								usuario3.setContraseña(passwordEncoder.encode("76128"));
-								usuario3.setRol(Usuario.Rol.DELYVERY);
+								usuario3.setRol(Usuario.Rol.ADMINISTRADOR);
 								usuario3.setFechaAlta(fechaAlta);
 
 								cliente3.setUsuario(usuario3);

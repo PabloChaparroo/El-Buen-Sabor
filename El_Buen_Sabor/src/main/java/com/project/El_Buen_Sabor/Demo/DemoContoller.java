@@ -18,8 +18,8 @@ public class DemoContoller {
         return "Bienvenido from secure endpoint ADMIN";
     }
 
-   @PostMapping (value = "Delibery")
-    public String welcomeDelibery(){return "Bienvenido from secure Delibery";}
+   @PostMapping (value = "Delivery")
+    public String welcomeDelivery(){return "Bienvenido from secure Delivery";}
 
     @PostMapping (value = "Cocinero")
     public String welcomeCocinero(){

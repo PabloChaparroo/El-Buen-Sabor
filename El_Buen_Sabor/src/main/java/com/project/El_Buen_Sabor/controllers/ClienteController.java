@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -35,6 +36,7 @@ public class  ClienteController extends BaseControllerImpl<Cliente, ClienteServi
         }
     }
     @GetMapping("/rankingCliente")
+    @PreAuthorize("hasRole('ADMINISTRADOR')")
     public ResponseEntity<?> rankingCliente(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fechaInicio, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fechaFin) {
         try {
             List<Object[]> clientes = servicio.rankingCliente(fechaInicio, fechaFin);
@@ -44,6 +46,7 @@ public class  ClienteController extends BaseControllerImpl<Cliente, ClienteServi
         }
     }
     @GetMapping("/pedidosPorFecha")
+    @PreAuthorize("hasRole('ADMINISTRADOR')")
     public ResponseEntity<?> pedidosPorFecha(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fechaInicio, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fechaFin) {
         try {
             List<Object[]> clientes = servicio.pedidosPorFecha(fechaInicio, fechaFin);

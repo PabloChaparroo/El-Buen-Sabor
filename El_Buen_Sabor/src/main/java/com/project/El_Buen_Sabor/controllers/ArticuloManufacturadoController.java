@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -35,6 +36,7 @@ public class ArticuloManufacturadoController extends  BaseControllerImpl<Articul
     }
 
     @GetMapping("/rankingArticulos")
+    @PreAuthorize("hasRole('ADMINISTRADOR')")
     public ResponseEntity<?> RankingArticuloManufacturado(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fechaInicio, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fechaFin) {
         try {
             List<Object[]> articulo = servicio.RankingArticuloManufacturado(fechaInicio, fechaFin);
